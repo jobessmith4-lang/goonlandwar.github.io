@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kingdom City–Goonland War - GoonPedia, the free encyclopedia</title>
+<link href="https://fonts.googleapis.com/css2?family=Linux+Libertine+O&family=Georgia&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', 'Linux Libertine O', serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #202122;
+    background: #f8f9fa;
+  }
+
+  a { color: #3366cc; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a.redlink { color: #ba0000; }
+
+  /* ── TOP BAR ── */
+  #top-bar {
+    background: #fff;
+    border-bottom: 1px solid #a2a9b1;
+    padding: 4px 10px;
+    font-size: 12px;
+    color: #54595d;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  /* ── SITE HEADER ── */
+  #site-header {
+    background: #fff;
+    border-bottom: 1px solid #a2a9b1;
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 20px;
+  }
+
+  #logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  #logo-sphere {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle at 35% 35%, #eee 30%, #888 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: inset -3px -3px 8px rgba(0,0,0,0.3);
+    flex-shrink: 0;
+  }
+
+  #logo-text { line-height: 1.1; }
+  #logo-text .site-name { font-family: 'Georgia', serif; font-size: 20px; font-weight: normal; letter-spacing: -0.5px; }
+  #logo-text .site-tagline { font-size: 11px; color: #54595d; }
+
+  #header-search {
+    flex: 1;
+    max-width: 500px;
+    margin-left: auto;
+    display: flex;
+    gap: 4px;
+  }
+
+  #header-search input {
+    flex: 1;
+    border: 1px solid #a2a9b1;
+    border-radius: 2px;
+    padding: 5px 8px;
+    font-size: 13px;
+    font-family: inherit;
+    background: #fff;
+  }
+
+  #header-search button {
+    background: #f8f9fa;
+    border: 1px solid #a2a9b1;
+    border-radius: 2px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  /* ── TAB BAR ── */
+  #tab-bar {
+    background: #f8f9fa;
+    border-bottom: 1px solid #a2a9b1;
+    display: flex;
+    padding: 0 16px;
+    gap: 0;
+    font-size: 13px;
+  }
+
+  .tab {
+    padding: 6px 14px;
+    border: 1px solid transparent;
+    border-bottom: none;
+    cursor: pointer;
+    color: #3366cc;
+    margin-bottom: -1px;
+    background: #f8f9fa;
+    border-radius: 2px 2px 0 0;
+  }
+
+  .tab.active {
+    background: #fff;
+    border-color: #a2a9b1;
+    border-bottom-color: #fff;
+    color: #202122;
+    font-weight: normal;
+  }
+
+  .tab-spacer { flex: 1; }
+
+  .tab-right {
+    padding: 6px 10px;
+    font-size: 12px;
+    color: #3366cc;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  /* ── LAYOUT ── */
+  #layout {
+    display: flex;
+    max-width: 1300px;
+    margin: 0 auto;
+    background: #fff;
+    border-left: 1px solid #a2a9b1;
+    border-right: 1px solid #a2a9b1;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR ── */
+  #sidebar {
+    width: 160px;
+    flex-shrink: 0;
+    border-right: 1px solid #a2a9b1;
+    padding: 16px 10px;
+    font-size: 12px;
+  }
+
+  .sidebar-section { margin-bottom: 18px; }
+  .sidebar-section h4 {
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #54595d;
+    border-bottom: 1px solid #a2a9b1;
+    padding-bottom: 3px;
+    margin-bottom: 6px;
+  }
+
+  .sidebar-section ul { list-style: none; }
+  .sidebar-section ul li { margin-bottom: 3px; }
+  .sidebar-section ul li a { color: #3366cc; font-size: 12px; }
+
+  /* ── CONTENT ── */
+  #content {
+    flex: 1;
+    padding: 20px 24px;
+    max-width: 980px;
+    min-width: 0;
+  }
+
+  #page-title {
+    font-family: 'Georgia', serif;
+    font-size: 28px;
+    font-weight: normal;
+    border-bottom: 1px solid #a2a9b1;
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  #short-desc {
+    font-style: italic;
+    color: #54595d;
+    font-size: 13px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  /* ── HATNOTE ── */
+  .hatnote {
+    padding: 4px 0 4px 24px;
+    font-style: italic;
+    font-size: 13px;
+    color: #54595d;
+    margin-bottom: 10px;
+  }
+
+  /* ── INFOBOX ── */
+  .infobox {
+    float: right;
+    clear: right;
+    margin: 0 0 16px 20px;
+    border: 1px solid #a2a9b1;
+    background: #f8f9fa;
+    font-size: 12px;
+    width: 290px;
+    line-height: 1.4;
+  }
+
+  .infobox-title {
+    background: #cee0f2;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 8px;
+    font-size: 13px;
+    border-bottom: 1px solid #a2a9b1;
+  }
+
+  .infobox-image {
+    text-align: center;
+    padding: 8px;
+    border-bottom: 1px solid #a2a9b1;
+  }
+
+  .infobox-image .war-diagram {
+    width: 100%;
+    max-width: 270px;
+    height: 140px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #555;
+  }
+
+  .war-diagram-text {
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+    z-index: 2;
+    line-height: 1.3;
+  }
+
+  .war-diagram::before {
+    content: '';
+    position: absolute;
+    top: 20px; left: 20px;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,100,50,0.4), transparent);
+  }
+
+  .war-diagram::after {
+    content: '';
+    position: absolute;
+    bottom: 20px; right: 20px;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(100,150,255,0.4), transparent);
+  }
+
+  .infobox-image-caption { font-size: 11px; font-style: italic; margin-top: 4px; color: #54595d; }
+
+  .infobox table { width: 100%; border-collapse: collapse; }
+  .infobox tr td, .infobox tr th { padding: 3px 6px; vertical-align: top; }
+  .infobox tr td:first-child { font-weight: bold; color: #3a3a3a; white-space: nowrap; width: 40%; }
+
+  .infobox-section-header {
+    background: #cee0f2;
+    font-weight: bold;
+    font-size: 11px;
+    text-align: center;
+    padding: 3px 6px;
+    border-top: 1px solid #a2a9b1;
+    border-bottom: 1px solid #a2a9b1;
+  }
+
+  .infobox hr { border: none; border-top: 1px solid #a2a9b1; margin: 0; }
+
+  .flag { font-size: 14px; }
+
+  /* ── TABLE OF CONTENTS ── */
+  #toc {
+    border: 1px solid #a2a9b1;
+    background: #f8f9fa;
+    padding: 10px 14px;
+    display: inline-block;
+    min-width: 220px;
+    max-width: 380px;
+    margin: 0 0 18px 0;
+    font-size: 13px;
+  }
+
+  #toc-title {
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  #toc-title span { font-weight: normal; font-size: 11px; color: #3366cc; cursor: pointer; margin-left: 8px; }
+
+  #toc ol { margin-left: 18px; }
+  #toc ol li { margin-bottom: 2px; }
+  #toc ol li a { color: #3366cc; font-size: 12.5px; }
+  #toc ol ol { margin-left: 16px; }
+  #toc ol ol li a { font-size: 12px; }
+  #toc ol ol ol li a { font-size: 11.5px; }
+
+  /* ── HEADINGS ── */
+  h2.section-heading {
+    font-family: 'Georgia', serif;
+    font-size: 22px;
+    font-weight: normal;
+    border-bottom: 1px solid #a2a9b1;
+    padding-bottom: 4px;
+    margin: 24px 0 10px 0;
+  }
+
+  h3.subsection-heading {
+    font-family: 'Georgia', serif;
+    font-size: 17px;
+    font-weight: bold;
+    margin: 18px 0 8px 0;
+  }
+
+  h4.sub-subsection-heading {
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 14px 0 6px 0;
+  }
+
+  h5.sub-sub-subsection-heading {
+    font-size: 13px;
+    font-weight: bold;
+    margin: 10px 0 4px 0;
+    font-style: italic;
+  }
+
+  /* ── PARAGRAPHS ── */
+  p { margin-bottom: 10px; }
+
+  /* ── INLINE FORMATTING ── */
+  .bold { font-weight: bold; }
+  sup { font-size: 10px; }
+  sup a { color: #3366cc; }
+
+  /* ── ARTICLE TABLES ── */
+  .wikitable {
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 13px;
+    width: 100%;
+  }
+
+  .wikitable th {
+    background: #eaecf0;
+    border: 1px solid #a2a9b1;
+    padding: 5px 8px;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  .wikitable td {
+    border: 1px solid #a2a9b1;
+    padding: 5px 8px;
+    vertical-align: top;
+  }
+
+  .wikitable tr:nth-child(even) td { background: #f8f9fa; }
+  .wikitable .table-header { background: #cee0f2; font-weight: bold; text-align: center; }
+
+  /* ── QUOTE BLOCK ── */
+  blockquote.wiki-quote {
+    border-left: 3px solid #a2a9b1;
+    margin: 12px 0 12px 20px;
+    padding: 6px 12px;
+    font-style: italic;
+    color: #3a3a3a;
+    background: #f8f9fa;
+  }
+
+  blockquote.wiki-quote cite { font-style: normal; font-size: 11px; color: #54595d; display: block; margin-top: 4px; }
+
+  /* ── SIDE BOXES ── */
+  .side-box {
+    float: right;
+    clear: right;
+    margin: 0 0 12px 16px;
+    border: 1px solid #a2a9b1;
+    background: #f8f9fa;
+    padding: 8px 10px;
+    font-size: 12px;
+    width: 200px;
+    line-height: 1.4;
+  }
+
+  .side-box-title { font-weight: bold; border-bottom: 1px solid #a2a9b1; margin-bottom: 5px; padding-bottom: 3px; font-size: 12px; }
+
+  /* ── CASUALTY BOX ── */
+  .casualty-box {
+    border: 1px solid #a2a9b1;
+    background: #f8f9fa;
+    margin: 16px 0;
+    font-size: 12.5px;
+  }
+
+  .casualty-box-title {
+    background: #cee0f2;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-bottom: 1px solid #a2a9b1;
+    text-align: center;
+  }
+
+  .casualty-box table { width: 100%; border-collapse: collapse; }
+  .casualty-box td { padding: 4px 10px; border-bottom: 1px solid #eee; }
+  .casualty-box td:first-child { font-weight: bold; width: 55%; }
+
+  /* ── REFERENCES ── */
+  #references-section { margin-top: 24px; }
+
+  .reflist {
+    font-size: 12px;
+    column-count: 2;
+    column-gap: 20px;
+  }
+
+  .reflist ol { padding-left: 20px; }
+  .reflist li { margin-bottom: 4px; line-height: 1.5; break-inside: avoid; }
+
+  /* ── CATEGORIES ── */
+  #categories {
+    border-top: 1px solid #a2a9b1;
+    margin-top: 28px;
+    padding-top: 8px;
+    font-size: 12px;
+  }
+
+  #categories strong { margin-right: 8px; }
+  .cat-link { margin-right: 6px; color: #3366cc; }
+
+  /* ── FOOTER ── */
+  #footer {
+    border-top: 1px solid #a2a9b1;
+    padding: 16px 24px;
+    font-size: 12px;
+    color: #54595d;
+    background: #f8f9fa;
+    text-align: center;
+  }
+
+  /* ── CLEARFIX ── */
+  .clearfix::after { content: ''; display: table; clear: both; }
+
+  /* ── NAVBOX ── */
+  .navbox {
+    border: 1px solid #a2a9b1;
+    background: #f8f9fa;
+    margin: 20px 0 0 0;
+    font-size: 12px;
+  }
+
+  .navbox-title {
+    background: #cee0f2;
+    font-weight: bold;
+    padding: 4px 8px;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .navbox table { width: 100%; border-collapse: collapse; }
+  .navbox td { padding: 4px 10px; border-top: 1px solid #a2a9b1; vertical-align: top; }
+  .navbox td:first-child { font-weight: bold; width: 15%; background: #eaecf0; white-space: nowrap; }
+
+  /* ── SMALL PORTRAIT TABLE ── */
+  .leader-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+  }
+
+  .leader-card {
+    border: 1px solid #a2a9b1;
+    background: #f8f9fa;
+    padding: 6px;
+    width: 130px;
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .leader-card .portrait {
+    width: 118px;
+    height: 90px;
+    background: #ddd;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #888;
+  }
+
+  .leader-card .name { font-weight: bold; font-size: 11px; }
+  .leader-card .title { color: #54595d; font-style: italic; }
+
+  /* ── WARNING BOX ── */
+  .ambox {
+    border: 1px solid #a2a9b1;
+    margin: 10px 0;
+    padding: 8px 12px;
+    background: #fbfbfb;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 12.5px;
+    color: #54595d;
+  }
+
+  .ambox-icon { font-size: 24px; flex-shrink: 0; }
+
+  /* ── PRINT STYLES ── */
+  @media print {
+    #sidebar, #top-bar, #tab-bar, #header-search { display: none; }
+    #content { padding: 0; }
+  }
+
+  .coordinates { float: right; font-size: 11px; color: #54595d; margin-top: 4px; }
+
+  small { font-size: 11px; }
+
+  ul.content-list { margin: 6px 0 10px 24px; }
+  ul.content-list li { margin-bottom: 3px; }
+
+  ol.content-list { margin: 6px 0 10px 24px; }
+  ol.content-list li { margin-bottom: 3px; }
+
+  .editsection { float: right; font-size: 11px; font-weight: normal; margin-top: 6px; }
+  .editsection a { color: #3366cc; }
+
+  .stub-notice {
+    border: 1px solid #a2a9b1;
+    background: #f8f9fa;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-style: italic;
+    color: #54595d;
+    margin: 10px 0;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .toc-number { color: #54595d; margin-right: 4px; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="top-bar">
+  <a href="#">Create account</a> &bull; <a href="#">Log in</a>
+</div>
+
+<!-- SITE HEADER -->
+<div id="site-header">
+  <a id="logo-area" href="#">
+    <div id="logo-sphere">🌐</div>
+    <div id="logo-text">
+      <div class="site-name">GoonPedia</div>
+      <div class="site-tagline">The Free Encyclopedia</div>
+    </div>
+  </a>
+  <div id="header-search">
+    <input type="text" placeholder="Search GoonPedia" value="Kingdom City–Goonland War">
+    <button>🔍</button>
+  </div>
+</div>
+
+<!-- TAB BAR -->
+<div id="tab-bar">
+  <div class="tab active">Article</div>
+  <div class="tab">Talk</div>
+  <div class="tab-spacer"></div>
+  <div class="tab-right">Read</div>
+  <div class="tab-right">Edit</div>
+  <div class="tab-right">View history</div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div id="layout">
+
+  <!-- SIDEBAR -->
+  <div id="sidebar">
+    <div class="sidebar-section">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#">Main page</a></li>
+        <li><a href="#">Contents</a></li>
+        <li><a href="#">Current events</a></li>
+        <li><a href="#">Random article</a></li>
+        <li><a href="#">About GoonPedia</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <h4>Contribute</h4>
+      <ul>
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Community portal</a></li>
+        <li><a href="#">Recent changes</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="#">What links here</a></li>
+        <li><a href="#">Related changes</a></li>
+        <li><a href="#">Printable version</a></li>
+        <li><a href="#">Cite this page</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <h4>Languages</h4>
+      <ul>
+        <li><a href="#">中文</a></li>
+        <li><a href="#">Bahasa Melayu</a></li>
+        <li><a href="#">العربية</a></li>
+        <li><a href="#">한국어</a></li>
+        <li><a href="#">हिन्दी</a></li>
+        <li><a href="#">+ 42 more</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div id="content">
+
+    <div class="coordinates"><a href="#">34°09′N 118°41′E</a> / <a href="#">34.150°N 118.683°E</a></div>
+    <h1 id="page-title">Kingdom City–Goonland War</h1>
+    <span id="short-desc">Armed conflict between the Republic of Goonland and the Kingdom City Coalition (2067)</span>
+
+    <div class="hatnote">This article is about the 2067 armed conflict. For the broader geopolitical rivalry, see <a href="#">Goonland–Kingdom City Relations</a>.</div>
+
+    <!-- INFOBOX -->
+    <table class="infobox">
+      <tr><td colspan="2" class="infobox-title">Kingdom City–Goonland War<br><small style="font-weight:normal;font-style:italic;">Goonland Sovereignty Conflict of 2067</small></td></tr>
+      <tr>
+        <td colspan="2" class="infobox-image">
+          <div class="war-diagram">
+            <div class="war-diagram-text">
+              ⚔️<br>
+              <strong style="font-size:12px;">2067</strong><br>
+              <span style="font-size:9px;">GOONLAND–KINGDOM CITY<br>THEATRE OF OPERATIONS</span>
+            </div>
+          </div>
+          <div class="infobox-image-caption">Goonland forces during the <a href="#">Battle of the Central Corridor</a>, August 2067</div>
+        </td>
+      </tr>
+      <tr><td colspan="2" class="infobox-section-header">Date and Location</td></tr>
+      <tr><td>Date</td><td>12 October 2066 – 14 September 2067<br><small>(11 months, 2 days)</small></td></tr>
+      <tr><td>Location</td><td>Goonland–Kingdom City border region; Southern Theatre; Central Corridor; Al-Goon Territories; Digital Domain</td></tr>
+      <tr><td>Result</td><td><b>Pyrrhic Goonland victory</b><br>
+        <ul style="margin-left:12px;font-size:11px;margin-top:3px;">
+          <li>Kingdom City unconditional ceasefire request</li>
+          <li>Treaty of the Central Corridor signed</li>
+          <li>Al-Goon granted Protected Autonomous Region status</li>
+          <li>UN investigations launched into digital warfare ethics</li>
+          <li>Severe Goonland economic destabilisation</li>
+        </ul>
+      </td></tr>
+      <tr><td colspan="2" class="infobox-section-header">Belligerents</td></tr>
+      <tr>
+        <td style="vertical-align:top;">
+          <b>Republic of Goonland</b><br>
+          <small>Supported by:</small><br>
+          🇮🇱 Israel<br>
+          🇺🇸 United States<br><br>
+          <small><i>Auxiliaries:</i></small><br>
+          Nanjing Honey Select Modder Corps<br>
+          Al-Gooniyyin Raider Division
+        </td>
+        <td style="vertical-align:top;">
+          <b>Kingdom City Coalition</b><br>
+          <small>Supported by:</small><br>
+          🇲🇾 Malaysia · 🇦🇺 Australia<br>
+          🇰🇭 Cambodia · 🇸🇬 Singapore<br>
+          🇧🇼 Botswana · 🇦🇪 UAE<br>
+          🇬🇧 United Kingdom · 🇮🇩 Indonesia<br>
+          🇿🇲 Zambia · 🇱🇰 Sri Lanka<br>
+          🇮🇳 India · 🇿🇦 South Africa
+        </td>
+      </tr>
+      <tr><td colspan="2" class="infobox-section-header">Commanders and Leaders</td></tr>
+      <tr>
+        <td style="vertical-align:top;">
+          <b>Ivan Yeow</b><br><small>(President)</small><br>
+          <b>Muhammad Adam Shahwi</b><br><small>(Vice President & Cmdr.)</small><br>
+          <b>Changyang He</b><br><small>(Chief Strategist)</small><br>
+          <b>Jinduo Li ⭐⭐⭐⭐⭐</b><br><small>(Supreme Master Baiter)</small><br>
+          <b>Kingsley</b><br><small>(Field Cmdr., Western Front)</small><br>
+          <b>Zirui</b><br><small>(Director, Nanjing Corps)</small>
+        </td>
+        <td style="vertical-align:top;">
+          <b>Mark Varughese</b><br><small>(Supreme Leader)</small><br>
+          <b>Loh Bin</b><br><small>(High Chancellor)</small><br>
+          <b>Geonhee Park</b><br><small>(Coalition Armed Forces Cmdr.)</small>
+        </td>
+      </tr>
+      <tr><td colspan="2" class="infobox-section-header">Strength</td></tr>
+      <tr>
+        <td style="vertical-align:top;">
+          Regular military: ~340,000<br>
+          Al-Gooniyyin militias: 12,000–18,000<br>
+          Nanjing Modder Corps: ~4,500 (digital)<br>
+          <b>Total: ~365,000</b>
+        </td>
+        <td style="vertical-align:top;">
+          Combined coalition forces: ~1,200,000+<br>
+          Naval assets: 3 carrier groups<br>
+          Air contingents: 14 nations<br>
+          <b>Total: ~1,250,000</b>
+        </td>
+      </tr>
+      <tr><td colspan="2" class="infobox-section-header">Casualties and Losses</td></tr>
+      <tr>
+        <td style="vertical-align:top;">
+          Military dead: ~95,000–140,000<br>
+          Wounded: ~200,000+<br>
+          Missing: ~18,000<br>
+          Al-Gooniyyin casualties: ~4,200<br>
+          <b>Total: 40–55% of standing force</b>
+        </td>
+        <td style="vertical-align:top;">
+          Military dead: ~62,000–88,000<br>
+          Wounded: ~160,000+<br>
+          POWs: ~14 senior officers captured<br>
+          Armoured assets destroyed: significant<br>
+          <b>Total: est. 250,000+ combined</b>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="padding: 4px 6px; font-size: 11px; text-align: center; border-top: 1px solid #a2a9b1;">
+          Civilian casualties: ~28,000 (disputed)<br>
+          Internally displaced: ~400,000<br>
+          Total estimated dead: 180,000–240,000
+        </td>
+      </tr>
+    </table>
+
+    <!-- LEAD SECTION -->
+    <p>The <b>Kingdom City–Goonland War</b> (officially designated the <b>Goonland Sovereignty Conflict of 2067</b>, and colloquially known in some circles as the <b>Great Goon War</b> or the <b>Church–Goonland Confrontation</b>) was a large-scale armed conflict fought from October 2066 to September 2067 between the <a href="#">Republic of Goonland</a> and the <a href="#">Kingdom City Coalition</a> — a multinational alliance of twelve nations united in defence of the theocratic city-state of <a href="#">Kingdom City</a>. Spanning eleven months of active hostilities across multiple military theatres including conventional ground warfare, naval blockade operations, aerial bombardment campaigns, and an unprecedented domain of coordinated digital and psychological warfare, the conflict resulted in estimated total fatalities exceeding 180,000 personnel, the near-complete economic collapse of Goonland's domestic economy, and a pyrrhic strategic victory for the Republic of Goonland upon Kingdom City's unconditional ceasefire request on 14 September 2067.<sup><a href="#">[1]</a></sup></p>
+
+    <p>The conflict is widely regarded by historians, military scholars, and political analysts as one of the most consequential and analytically complex armed conflicts of the mid-21st century. Its significance derives not merely from its scale or its outcome, but from the range of novel military, ethical, and geopolitical precedents it established. The war marked the first large-scale deployment of a <a href="#">Synthetic Narrative Offensive</a> — a coordinated programme of AI-generated disinformation disseminated across international media ecosystems — as an official instrument of state military strategy. It also represented the most ambitious and controversial integration of non-state irregular forces into a nationally recognised military command structure since the proxy conflicts of the twentieth century, through the recruitment and deployment of the <a href="#">Al-Gooniyyin Raider Division</a> under Vice President <a href="#">Muhammad Adam Shahwi</a>.<sup><a href="#">[2]</a></sup></p>
+
+    <p>The ideological roots of the conflict stretched back several decades, to the founding of the Republic of Goonland as a semi-technocratic state with an internet-native political culture diametrically opposed to the theocratic-democratic governance model of Kingdom City. Territorial disputes, cultural antagonism, competing geopolitical alignments, and the rapid expansion of Goonland's digital influence in the years leading up to 2067 collectively escalated regional tensions to an irreversible breaking point. The immediate casus belli was Goonland's pre-emptive strike on Kingdom City's eastern communication infrastructure on 12 October 2066, executed on the basis of intelligence provided by Israeli signals units indicating an imminent Coalition mobilisation order.<sup><a href="#">[3]</a></sup></p>
+
+    <p>The war's outcome — a technical Goonland victory achieved at the cost of 40 to 55 percent of its standing military force — gave rise to the term <i><a href="#">Goonland Victory</a></i>, which entered geopolitical lexicon as a synonym for a triumph so costly as to be functionally indistinguishable from strategic defeat. <a href="#">General Jinduo Li</a>'s doctrine of <a href="#">Strategic Exhaustion</a>, which combined psychological warfare, manufactured disinformation, and coordinated influence operations with conventional military pressure, is now taught as a dedicated module in military academies across more than thirty nations, simultaneously lauded as a masterclass in asymmetric modern warfare and condemned as an ethically unconscionable template for conflicts of the future.<sup><a href="#">[4]</a></sup></p>
+
+    <!-- TABLE OF CONTENTS -->
+    <div id="toc">
+      <div id="toc-title">Contents <span>[hide]</span></div>
+      <ol>
+        <li><a href="#background"><span class="toc-number">1</span> Background and Origins</a>
+          <ol>
+            <li><a href="#founding-goonland"><span class="toc-number">1.1</span> The Founding of the Republic of Goonland</a></li>
+            <li><a href="#kingdom-city-rise"><span class="toc-number">1.2</span> The Rise of Kingdom City</a></li>
+            <li><a href="#ideological-divide"><span class="toc-number">1.3</span> Ideological and Cultural Divergence</a></li>
+            <li><a href="#territorial-disputes"><span class="toc-number">1.4</span> Territorial Disputes and Border Incidents</a></li>
+            <li><a href="#prewar-diplomacy"><span class="toc-number">1.5</span> Failed Pre-War Diplomacy</a></li>
+          </ol>
+        </li>
+        <li><a href="#belligerents"><span class="toc-number">2</span> Belligerents</a>
+          <ol>
+            <li><a href="#republic-goonland"><span class="toc-number">2.1</span> Republic of Goonland</a></li>
+            <li><a href="#kingdom-coalition"><span class="toc-number">2.2</span> Kingdom City Coalition</a></li>
+          </ol>
+        </li>
+        <li><a href="#church"><span class="toc-number">3</span> The Church of Kingdom City</a></li>
+        <li><a href="#command"><span class="toc-number">4</span> Military Command and Leadership</a>
+          <ol>
+            <li><a href="#jinduo-li"><span class="toc-number">4.1</span> Jinduo Li — Supreme Master Baiter</a></li>
+            <li><a href="#shahwi"><span class="toc-number">4.2</span> Muhammad Adam Shahwi — Vice President & Commander</a></li>
+            <li><a href="#changyang"><span class="toc-number">4.3</span> Changyang He — Chief Military Strategist</a></li>
+            <li><a href="#ivan-yeow"><span class="toc-number">4.4</span> Ivan Yeow — President of Goonland</a></li>
+            <li><a href="#kingsley"><span class="toc-number">4.5</span> Kingsley — Field Commander, Western Front</a></li>
+            <li><a href="#zirui"><span class="toc-number">4.6</span> Zirui — Director, Nanjing Modder Corps</a></li>
+            <li><a href="#mark-varughese"><span class="toc-number">4.7</span> Mark Varughese — Supreme Leader of Kingdom City</a></li>
+            <li><a href="#loh-bin"><span class="toc-number">4.8</span> Loh Bin — High Chancellor</a></li>
+            <li><a href="#geonhee-park"><span class="toc-number">4.9</span> Geonhee Park — Coalition Armed Forces Commander</a></li>
+          </ol>
+        </li>
+        <li><a href="#modder-corps"><span class="toc-number">5</span> Goonland's Unconventional Warfare Division</a></li>
+        <li><a href="#international"><span class="toc-number">6</span> International Support and Proxy Dynamics</a></li>
+        <li><a href="#course"><span class="toc-number">7</span> Course of the War</a>
+          <ol>
+            <li><a href="#phase1"><span class="toc-number">7.1</span> Phase I: Opening Strikes (Oct–Nov 2066)</a></li>
+            <li><a href="#phase2"><span class="toc-number">7.2</span> Phase II: The Southern Campaign (Dec 2066–Feb 2067)</a></li>
+            <li><a href="#phase3"><span class="toc-number">7.3</span> Phase III: Digital Warfare and Psychological Blitz (Jan–Apr 2067)</a></li>
+            <li><a href="#phase4"><span class="toc-number">7.4</span> Phase IV: Battle of the Central Corridor (May–Jul 2067)</a></li>
+            <li><a href="#phase5"><span class="toc-number">7.5</span> Phase V: Endgame and Ceasefire (Aug–Sep 2067)</a></li>
+          </ol>
+        </li>
+        <li><a href="#key-battles"><span class="toc-number">8</span> Key Battles and Operations</a></li>
+        <li><a href="#casualties"><span class="toc-number">9</span> Casualties and Losses</a></li>
+        <li><a href="#aftermath"><span class="toc-number">10</span> Aftermath</a></li>
+        <li><a href="#war-crimes"><span class="toc-number">11</span> War Crimes Investigations and International Legal Proceedings</a></li>
+        <li><a href="#legacy"><span class="toc-number">12</span> Legacy</a></li>
+        <li><a href="#references"><span class="toc-number">13</span> References</a></li>
+        <li><a href="#seealso"><span class="toc-number">14</span> See also</a></li>
+      </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SECTION 1: BACKGROUND -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <h2 class="section-heading" id="background">Background and Origins <span class="editsection">[<a href="#">edit</a>]</span></h2>
+
+    <h3 class="subsection-heading" id="founding-goonland">The Founding of the Republic of Goonland</h3>
+
+    <p>The <a href="#">Republic of Goonland</a> emerged as a formally recognised sovereign state in 2031 following a prolonged period of digital-native political organising that began in online communities in the early 2020s. Its founding political philosophy — often described by critics as "irony-governance" and by proponents as "techno-participatory democracy" — rejected many of the institutional norms of legacy nation-states in favour of a decentralised, internet-mediated system of civic participation. Goonland's early leaders were drawn disproportionately from technology sectors, digital creative communities, and a distinctive subculture of internet-native political activists who had developed their worldview in the contested and frequently anarchic spaces of early-21st-century online discourse.<sup><a href="#">[5]</a></sup></p>
+
+    <p>Geographically, Goonland occupied a semi-arid territory of approximately 480,000 square kilometres, bordered to the east by the largely ungoverned frontier region of <a href="#">Al-Goon</a> and to the west by a coastline of strategic maritime importance. Its capital, <a href="#">Goonhaven</a>, was founded in 2033 and rapidly developed into a technologically advanced urban centre characterised by high-speed digital infrastructure, a vibrant and irreverent public culture, and an unusually young demographic profile. By 2060, Goonland's population had reached approximately 28 million, with a median age of 27.4 years — one of the youngest in any established nation-state.<sup><a href="#">[6]</a></sup></p>
+
+    <p>The Republic's governance structure was semi-technocratic in character. While formal democratic elections determined the composition of the <a href="#">Grand Goon Council</a>, significant executive authority was vested in the <a href="#">Office of the President</a>, whose occupant served simultaneously as head of state, commander-in-chief, and chief administrator of the national digital infrastructure. <a href="#">Ivan Yeow</a>, who assumed the presidency in 2059, had come to power on a platform combining techno-nationalist expansion with aggressive foreign policy, promising to secure Goonland's territorial integrity and global digital influence against what he characterised as "archaic coalition power structures."<sup><a href="#">[7]</a></sup></p>
+
+    <h3 class="subsection-heading" id="kingdom-city-rise">The Rise of Kingdom City</h3>
+
+    <p><a href="#">Kingdom City</a> occupied a densely populated urban territory of approximately 3,200 square kilometres, making it one of the most densely inhabited political entities on the planet by 2067, with an estimated population of 9.4 million. Its political system — described in constitutional documents as a <a href="#">Theocratic-Democratic Hybrid</a> — combined the formal institutions of representative democracy with the spiritual authority of the <a href="#">Kingdom City Church</a>, a multi-denominational but broadly Christian-aligned ecclesiastical body whose doctrinal leadership held formal veto authority over the city-state's legislative assembly.<sup><a href="#">[8]</a></sup></p>
+
+    <p>Kingdom City's strategic importance vastly exceeded its territorial size. Its location at the intersection of three major maritime trade routes made it a critical node in global commercial logistics. Its port facilities handled approximately 6.2% of global containerised trade annually, and its financial sector was ranked among the top fifteen globally by assets under management. These economic attributes had, over several decades, allowed Kingdom City to cultivate an extraordinarily broad international alliance network, built partly on genuine ideological alignment with the city-state's theocratic governance model among sympathetic nations, and partly on the transactional economic relationships created by its commercial centrality.<sup><a href="#">[9]</a></sup></p>
+
+    <p>The <a href="#">Kingdom City Church</a>, under the leadership of <a href="#">High Chancellor Loh Bin</a> and the overarching authority of <a href="#">Supreme Leader Mark Varughese</a>, had in the decade preceding the 2067 conflict significantly expanded its influence beyond purely spiritual matters. The Church administered an extensive network of educational institutions, media organisations, and humanitarian agencies across twelve nations, constituting a form of <a href="#">ecclesiastical soft power</a> unprecedented in the modern era. Varughese, universally regarded as a charismatic and strategically astute leader, had successfully framed Kingdom City's international alliances in terms of shared moral and civilisational values — a narrative that would prove both a powerful recruitment tool and a significant vulnerability once Goonland's disinformation operations began to probe its internal contradictions.<sup><a href="#">[10]</a></sup></p>
+
+    <h3 class="subsection-heading" id="ideological-divide">Ideological and Cultural Divergence</h3>
+
+    <p>The fundamental incompatibility between Goonland's internet-native, irony-saturated political culture and Kingdom City's earnest, spiritually grounded theocratic governance model was apparent from the earliest years of their coexistence as geopolitical entities. To Goonland's citizenry, raised on a diet of digital satire and irreverent political discourse, Kingdom City's formal religiosity appeared deeply anachronistic — a relic of pre-digital governance philosophy unsuited to the complexities of mid-21st-century geopolitics. To Kingdom City's population and its international allies, Goonland's deliberately provocative political aesthetics were perceived as symptoms of a deeply unstable, nihilistic social order that posed a civilisational threat to more traditional forms of governance.<sup><a href="#">[11]</a></sup></p>
+
+    <p>This mutual incomprehension was systematically exploited by political actors on both sides for years before any shots were fired. Goonland's state media and influential independent digital content creators routinely produced satirical content targeting Kingdom City's leadership, circulated across international platforms with considerable reach. Kingdom City's Church-affiliated media organisations responded with earnest but frequently counterproductive condemnations of Goonland's "digital degeneracy," which only amplified Goonland's content within international discourse. Scholars of the conflict have identified this pre-war period of cultural antagonism as a critical precursor that made diplomatic resolution of underlying disputes increasingly impossible by the mid-2060s.<sup><a href="#">[12]</a></sup></p>
+
+    <h3 class="subsection-heading" id="territorial-disputes">Territorial Disputes and Border Incidents</h3>
+
+    <p>Parallel to the ideological conflict, a series of concrete territorial disputes had accumulated over the preceding two decades. The most significant of these concerned the <a href="#">Goon Straits</a> — a narrow maritime passage of considerable strategic value lying between Goonland's western coastline and a cluster of small islands claimed by both Goonland and a Coalition-aligned nation. Between 2048 and 2065, at least seventeen formally documented maritime confrontations occurred in the Goon Straits, four of which resulted in casualties among naval personnel. Each incident was accompanied by diplomatic protests, retaliatory trade measures, and escalating public rhetoric, progressively narrowing the political space available for negotiated resolution.<sup><a href="#">[13]</a></sup></p>
+
+    <p>The <a href="#">Al-Goon Frontier Incident of 2063</a> represented the most dangerous pre-war escalation. Kingdom City Coalition forces, operating under a disputed mandate from the Coalition's collective security agreement, conducted what they characterised as a "counter-terrorism operation" in the Al-Goon eastern territories, areas that Goonland claimed as sovereign territory despite exercising only nominal control over them. Goonland declared the incursion an act of war, recalled its ambassadors from all twelve Coalition member states, and placed its military on its highest alert status. That the incident was eventually de-escalated through Swiss diplomatic mediation was attributed by subsequent analysts less to the effectiveness of diplomacy than to the unreadiness of both sides for a full-scale confrontation that they nevertheless viewed as increasingly inevitable.<sup><a href="#">[14]</a></sup></p>
+
+    <h3 class="subsection-heading" id="prewar-diplomacy">Failed Pre-War Diplomacy</h3>
+
+    <p>Three formal rounds of negotiations were conducted under United Nations auspices between 2064 and 2066. The <a href="#">Nairobi Talks</a> (2064), the <a href="#">Zurich Accords Process</a> (2065), and the <a href="#">Geneva Emergency Summit</a> (June 2066) all failed to produce binding agreements. Goonland's negotiating position consistently demanded formal recognition of its sovereignty over the Al-Goon territories and the cessation of Coalition military activities within 400 kilometres of its borders. The Coalition's position equally consistently refused to acknowledge Goonland's sovereignty claims over territories it characterised as ungoverned buffer zones, and demanded limitations on Goonland's digital influence operations targeting Coalition member states' domestic audiences.<sup><a href="#">[15]</a></sup></p>
+
+    <p>President Ivan Yeow's decision to abandon the Geneva process in August 2066 — announced via a characteristically irreverent Goonland state media broadcast that featured animated satirical imagery of the Coalition's ambassadors — was widely interpreted internationally as a signal that Goonland had concluded diplomacy was no longer in its strategic interest. Intelligence assessments compiled by Israeli analysts and subsequently shared with Goonland's military command concluded that the Coalition had, in parallel with the Geneva talks, been quietly coordinating a military mobilisation timetable. This intelligence assessment provided the direct operational context for the October 2066 pre-emptive strike that formally initiated the conflict.<sup><a href="#">[16]</a></sup></p>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SECTION 2: BELLIGERENTS -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <h2 class="section-heading" id="belligerents">Belligerents <span class="editsection">[<a href="#">edit</a>]</span></h2>
+
+    <h3 class="subsection-heading" id="republic-goonland">Republic of Goonland</h3>
+
+    <p>The armed forces of the Republic of Goonland at the outbreak of the conflict comprised approximately 340,000 active-duty personnel organised across four principal branches: the <a href="#">Goonland Ground Forces</a>, the <a href="#">Goonland Naval Service</a>, the <a href="#">Goonland Aerial Corps</a>, and the uniquely constituted <a href="#">Strategic Operations and Digital Warfare Division</a>. Goonland's military doctrine, developed over the preceding decade under the intellectual stewardship of <a href="#">Jinduo Li</a> and <a href="#">Changyang He</a>, emphasised speed, technological superiority, psychological pressure, and the systematic exploitation of adversarial command confusion over traditional positional warfare. This doctrine was sometimes summarised in Goonland military planning documents as the <a href="#">Principle of Asymmetric Sufficiency</a> — the concept that a technologically and psychologically superior force need not achieve numerical parity to achieve decisive military outcomes.<sup><a href="#">[17]</a></sup></p>
+
+    <p>Goonland's conventional military assets, while numerically modest by comparison with the combined Coalition force, were technologically advanced. American-supplied drone systems constituted the backbone of Goonland's aerial strike capability, supplemented by domestically developed unmanned ground vehicles that had been trialled, controversially, in the Al-Goon border region in the years preceding the conflict. Israeli-provided cyber-warfare capabilities — particularly the <a href="#">Sigint Package Omega</a>, a suite of signal intelligence tools capable of penetrating layered military encryption — proved decisive in the war's early months, enabling Goonland to effectively blind Kingdom City's early-warning systems during the opening strikes.<sup><a href="#">[18]</a></sup></p>
+
+    <p>Supplementing Goonland's regular forces were two auxiliary formations of enormous operational significance. The <a href="#">Nanjing Honey Select Modder Corps</a>, under the direction of <a href="#">Zirui</a>, constituted Goonland's primary instrument of digital and psychological warfare. The <a href="#">Al-Gooniyyin Raider Division</a>, recruited and commanded by Vice President <a href="#">Muhammad Adam Shahwi</a>, provided an irregular asymmetric strike capability on the southern and eastern fronts that proved extraordinarily effective against Coalition conventional forces, at significant ethical and political cost.</p>
+
+    <table class="wikitable">
+      <tr><th colspan="3" class="table-header">Republic of Goonland — Senior Military Leadership</th></tr>
+      <tr><th>Name</th><th>Title / Rank</th><th>Theatre of Responsibility</th></tr>
+      <tr><td><a href="#">Ivan Yeow</a></td><td>President of the Republic; Commander-in-Chief</td><td>Strategic direction; domestic political authority</td></tr>
+      <tr><td><a href="#">Muhammad Adam Shahwi</a></td><td>Vice President; Commander, Al-Gooniyyin Raider Division</td><td>Southern and Eastern Fronts; irregular warfare</td></tr>
+      <tr><td><a href="#">Changyang He</a></td><td>Chief Military Strategist</td><td>Conventional operations; battlefield coordination</td></tr>
+      <tr><td><a href="#">Jinduo Li</a> (李劲铎)</td><td>Supreme Master Baiter, General of the First Order</td><td>Psychological operations; strategic intelligence; deception campaigns</td></tr>
+      <tr><td><a href="#">Kingsley</a></td><td>Field Commander, Western Front</td><td>Ground advances; territorial coordination with Modder Corps</td></tr>
+      <tr><td><a href="#">Zirui</a></td><td>Director, Nanjing Honey Select Modder Corps</td><td>Digital warfare; influence operations; synthetic content deployment</td></tr>
+    </table>
+
+    <h3 class="subsection-heading" id="kingdom-coalition">Kingdom City Coalition</h3>
+
+    <p>The <a href="#">Kingdom City Coalition</a> represented one of the most diverse multinational military alliances assembled in the twenty-first century, comprising the military forces of twelve sovereign nations spanning three continents and incorporating an extraordinary range of military traditions, organisational cultures, and strategic priorities. Coalition membership was bound together by a combination of the 2059 <a href="#">Kingdom City Mutual Defence Compact</a> — a legally binding collective security treaty — and the web of bilateral diplomatic and economic relationships that Kingdom City had cultivated through its decades of commercial and ecclesiastical influence.<sup><a href="#">[19]</a></sup></p>
+
+    <p><a href="#">Malaysia</a> served as the primary logistics hub and principal financial underwriter of the Coalition war effort, hosting the majority of Coalition forward-staging areas and contributing the largest single national contingent of ground forces. <a href="#">India</a> and the <a href="#">United Kingdom</a> provided naval assets and senior advisory personnel, with the Royal Navy's contribution of two Astute-class successor submarines representing the Coalition's most sophisticated anti-submarine warfare capability. <a href="#">Indonesia</a> and <a href="#">Singapore</a> coordinated a maritime blockade operation designed to interdict Goonland's coastal supply lines, while <a href="#">Australia</a> deployed air support — including its most advanced multi-role fighter contingent — from forward bases in the eastern Indian Ocean. <a href="#">South Africa</a>, <a href="#">Botswana</a>, and <a href="#">Zambia</a> contributed humanitarian logistics and peacekeeping contingents under the framework of a joint <a href="#">African Coalition Subcommittee</a> agreement.<sup><a href="#">[20]</a></sup></p>
+
+    <table class="wikitable">
+      <tr><th colspan="3" class="table-header">Kingdom City Coalition — Senior Military Leadership</th></tr>
+      <tr><th>Name</th><th>Title</th><th>Role in Conflict</th></tr>
+      <tr><td><a href="#">Mark Varughese</a></td><td>Supreme Leader of Kingdom City</td><td>Overall political authority; unified command of military and ecclesiastical structures</td></tr>
+      <tr><td><a href="#">Loh Bin</a></td><td>High Chancellor / Chief Church Representative</td><td>Diplomatic coordination with coalition nations; domestic mobilisation through Church network</td></tr>
+      <tr><td><a href="#">Geonhee Park</a></td><td>Commander of Coalition Armed Forces</td><td>Field operations across all fronts; strategic coordination among twelve national contingents</td></tr>
+    </table>
+
+    <p>Despite its overwhelming numerical superiority — Coalition combined forces are estimated to have exceeded 1.2 million personnel at peak mobilisation — the Coalition's military effectiveness was consistently undermined by severe coordination challenges inherent in its structure. Twelve national contingents with differing military doctrines, incompatible communication systems, twenty-three operational languages, and divergent national interests on specific tactical questions created a command environment of extraordinary complexity that Coalition Commander <a href="#">Geonhee Park</a> struggled to manage effectively throughout the conflict. These structural vulnerabilities were identified and systematically exploited by Goonland's strategic planners, particularly through General Jinduo Li's psychological operations targeting inter-Coalition trust and communication.<sup><a href="#">[21]</a></sup></p>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SECTION 3: CHURCH -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <h2 class="section-heading" id="church">The Church of Kingdom City <span class="editsection">[<a href="#">edit</a>]</span></h2>
+
+    <div class="side-box">
+      <div class="side-box-title">Church of Kingdom City</div>
+      <b>Founded:</b> 2019<br>
+      <b>Headquarters:</b> Kingdom City Cathedral Complex<br>
+      <b>Head:</b> High Chancellor Loh Bin<br>
+      <b>Spiritual Authority:</b> Mark Varughese<br>
+      <b>Members:</b> ~3.4 million active (2067)<br>
+      <b>International branches:</b> 47 nations
+    </div>
+
+    <p>The <a href="#">Kingdom City Church</a> (formally the <b>Unified Ecclesiastical Authority of Kingdom City</b>) served as both the spiritual and administrative backbone of the city-state's war effort in ways that had no direct parallel in any prior modern conflict. Unlike the conventional separation of military and religious authority assumed in most democratic and even most theocratic governance systems, Kingdom City's constitutional arrangements explicitly vested the Church with co-equal authority over decisions relating to national security, including the power to formally endorse or veto any declaration of armed conflict. The decision to respond militarily to Goonland's 2066 pre-emptive strike accordingly required, and received, formal ecclesiastical authorisation from a joint session of the <a href="#">Church Council of Elders</a> — a procedural step that was both constitutionally mandated and politically essential for maintaining domestic legitimacy in a population whose identity was deeply interwoven with the Church's values and authority.<sup><a href="#">[22]</a></sup></p>
+
+    <p>Under the authority of <a href="#">High Chancellor Loh Bin</a>, the Church mobilised its domestic resources with impressive efficiency in the weeks following Goonland's opening strikes. The Church's extensive network of community organisations and educational institutions became recruitment channels for civilian support roles, while its media apparatus — comprising three television networks, fourteen radio stations, and an online presence with reach across forty-seven nations — was immediately repurposed as the primary vehicle for the Coalition's domestic and international information operations. Loh Bin, characterised by biographers as a figure of formidable organisational intelligence and deep personal faith, proved exceptionally effective at translating the abstract geopolitical grievances underlying the conflict into a narrative of spiritual significance that resonated with Kingdom City's population and with allied nations sharing similar theocratic or religiously conservative governance orientations.<sup><a href="#">[23]</a></sup></p>
+
+    <p><a href="#">Mark Varughese</a>'s decision to unify military and religious command under his personal authority — placing himself simultaneously as political head of state, supreme military authority, and de facto spiritual leader for the duration of the conflict — was unprecedented in Kingdom City's governance history and deeply controversial among the city-state's constitutional scholars. Varughese justified the move as a wartime necessity, arguing that the extreme complexity of coordinating a twelve-nation military coalition required a single authoritative point of final decision-making that could cut through inter-coalition political negotiations. In practice, this consolidation of authority substantially enhanced the speed and coherence of Kingdom City's political decision-making, even as it failed to resolve the fundamental coordination challenges among the Coalition's diverse national military contingents.<sup><a href="#">[24]</a></sup></p>
+
+    <p>The Church's propaganda network, while sophisticated in its theological framing and reach, was ultimately one of the primary targets of General Jinduo Li's <a href="#">Synthetic Narrative Offensive</a>. By March 2067, Goonland's disinformation operations had successfully inserted fabricated internal Church communications into international media circuits, creating doubt among Coalition-aligned nations about the unity of Kingdom City's ecclesiastical leadership and sowing confusion about the Church's true political objectives. Malaysian government officials would later cite these fabricated communications as a contributing factor in their decision to reduce the scope of their logistical commitment to the Coalition in the conflict's final months — a reduction that significantly constrained the Coalition's operational capacity at a critical moment in the war's trajectory.<sup><a href="#">[25]</a></sup></p>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SECTION 4: COMMAND AND LEADERSHIP -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <h2 class="section-heading" id="command">Military Command and Leadership <span class="editsection">[<a href="#">edit</a>]</span></h2>
+
+    <h3 class="subsection-heading" id="jinduo-li">Jinduo Li (李劲铎) — Supreme Master Baiter, General of the First Order</h3>
+
+    <p><b>Jinduo Li</b> (李劲铎; born 14 March 2014, <a href="#">Nanjing</a>, People's Republic of China; naturalised Goonland citizen 2037) held the highest and most operationally consequential military rank within the Republic of Goonland's armed forces — the title of <b>Supreme Master Baiter</b>, a designation wholly unique to Goonland's unconventional military doctrine and carrying authority equivalent, by international military equivalence standards, to a five-star general rank in conventional nation-state military hierarchies. Li's appointment to the newly created role in 2061, by personal presidential decree of <a href="#">Ivan Yeow</a>, reflected the Goonland military establishment's recognition that the coming conflict would be decided as much in the information domain as on any conventional battlefield.<sup><a href="#">[26]</a></sup></p>
+
+    <p>Within Goonland's military command architecture, Li occupied the apex of strategic authority, superseded in the chain of command only by President Yeow and Vice President Shahwi in their respective executive capacities. His title, while attracting considerable international ridicule and condescension in the conflict's opening months, carried full command authority over four major divisions of Goonland's war-fighting apparatus: the <a href="#">Goonland Strategic Operations Division</a>, the <a href="#">Psychological Warfare and Influence Bureau</a>, the <a href="#">Nanjing Auxiliary Modder Corps</a> (in operational coordination with Zirui), and all classified black-operations units functioning beyond conventional theatre boundaries. The scope of Li's authority effectively made him Goonland's overall architect of strategic victory — a role he executed with exceptional competence and near-total disregard for international norms governing the conduct of information warfare.<sup><a href="#">[27]</a></sup></p>
+
+    <p>Li's military philosophy was built on a doctrine he had developed over three decades of service in Goonland's Strategic Intelligence Corps: a framework he designated <a href="#">Strategic Exhaustion</a>. The doctrine's central premise was that in any conflict involving an adversary coalition — particularly a large and internally diverse one — the decisive vulnerability was not military strength but psychological cohesion. A coalition held together by diplomatic agreements, shared values, and mutual trust could be systematically dismantled through the precise, sustained application of doubt, manufactured discord, and coordinated disinformation before conventional military forces were ever brought to decisive engagement. As Li himself articulated in his classified 2060 strategic planning paper (subsequently declassified and widely quoted): "the enemy's will is the first fortress. Breach it, and all others follow."<sup><a href="#">[28]</a></sup></p>
+
+    <h4 class="sub-subsection-heading">Major Operations Directed by Li</h4>
+
+    <p><b>Operation Hollow Signal</b> was Li's first major operational achievement of the war. Launched in the conflict's second week, it involved a coordinated assault on Kingdom City's inter-coalition communication frequencies using Israeli-provided Sigint Package Omega tools augmented by Goonland's own digital warfare capabilities. For 47 consecutive days — from 26 October to 11 December 2066 — Kingdom City's primary encrypted communication channels between its own military command and its Coalition partners were either jammed, spoofed with false traffic, or monitored in real time. The operational impact was devastating: Coalition forces conducted at least three major tactical movements during this period based on fabricated orders that Li's bureau had inserted into their communication streams, resulting in significant mispositioning of Coalition armoured assets that would only be discovered after the conflict's conclusion.<sup><a href="#">[29]</a></sup></p>
+
+    <p>The <b>Synthetic Narrative Offensive</b> of March 2067 represented Li's most ambitious and most internationally condemned operation. Drawing on the capabilities of Zirui's Nanjing Modder Corps, Li's bureau produced and disseminated a series of fabricated diplomatic communications, internal Church documents, and manipulated video statements attributed to prominent Coalition leaders, all designed to create the impression of severe internal fractures within the Coalition's political and military leadership. The most consequential fabrication was a series of doctored messages purportedly from Malaysian Defence Minister <a href="#">Azri Hashim</a> to a Singaporean counterpart, in which "Hashim" appeared to characterise the Kingdom City Church's leadership as "extremists" whose alliance was damaging Malaysia's economic interests. These fabrications, injected into international news circuits in March 2067, triggered a severe diplomatic crisis between Malaysia and the United Kingdom that persisted for three months and substantially reduced Malaysia's logistical commitment to the Coalition war effort during the critical Phase IV operations.<sup><a href="#">[30]</a></sup></p>
+
+    <blockquote class="wiki-quote">
+      "Every battlefield begins in the mind. What my division does is not an aberration of warfare — it is warfare in its purest and most efficient form."
+      <cite>— General Jinduo Li, post-war interview with the Goonland Strategic Review, November 2067</cite>
+    </blockquote>
+
+    <p>Li was controversially awarded the <a href="#">Goonland Order of Strategic Excellence (First Class)</a> following the war's conclusion — the Republic's highest military decoration — in a ceremony personally presided over by President Yeow. The decision triggered formal diplomatic protests from eleven Coalition-aligned nations at the United Nations General Assembly, and prompted the UN Special Committee on Digital Warfare Ethics to launch a comprehensive investigation into the legality of Goonland's information operations under international humanitarian law frameworks. Li's response to the UN scrutiny was characteristically unapologetic: he attended the first session of the Committee's hearings in person, delivered an opening statement that most observers characterised as a lecture on the inadequacy of existing international legal frameworks for the digital domain, and declined to answer any substantive questions on the grounds that strategic psychological operations against an adversary coalition constituted a legitimate instrument of national defence.<sup><a href="#">[31]</a></sup></p>
+
+    <h3 class="subsection-heading" id="shahwi">Muhammad Adam Shahwi — Vice President and Commander of the Al-Gooniyyin Raider Division</h3>
+
+    <p><b>Muhammad Adam Shahwi</b> (born 2 September 2021, <a href="#">Kuala Lumpur</a>; naturalised Goonland citizen 2041) combined his constitutional role as Vice President of the Republic of Goonland with direct field command of the most unconventional and arguably most effective military formation deployed in the entire conflict. A former defence policy strategist with extensive academic credentials in asymmetric warfare and tribal governance systems, Shahwi had advocated for years, prior to the 2067 conflict, for a strategic doctrine that would incorporate the Al-Goon region's indigenous military traditions — its semi-nomadic bandit clans and their centuries of expertise in desert asymmetric combat — into Goonland's formal war-fighting capability. The onset of the 2067 conflict provided him with both the necessity and the presidential authorisation to translate this strategic vision into operational reality.<sup><a href="#">[32]</a></sup></p>
+
+    <h4 class="sub-subsection-heading">The Al-Goon Recruitment Mission</h4>
+
+    <p>Shahwi's departure from Goonhaven in November 2066 — travelling with a minimal escort of twelve bodyguards and two political advisers — was kept from public knowledge for the duration of his mission and was characterised in official communications as a routine "vice presidential tour of eastern territorial administration." In reality, he spent the following seven weeks embedded in the communities of Al-Goon, conducting direct negotiations with the chieftains and warlords of at least nine distinct semi-nomadic tribal clans. The negotiations were conducted in Arabic, Goonland's official second language, and were facilitated by Shahwi's personal religious credibility — his identity as a practicing Muslim provided a crucial foundation of trust in a region where Islamic identity was the primary marker of social cohesion.<sup><a href="#">[33]</a></sup></p>
+
+    <p>Shahwi's negotiating offer was structured with remarkable political and logistical sophistication for a mission conducted under wartime constraints. In exchange for formal military alignment under Goonland's war effort, participating tribal clans were offered: full legal pardons for all past criminal activities, including those relating to Goonland's own security forces; formal recognition of territorial autonomy in their respective home regions under a new <a href="#">Protected Autonomous Region</a> legal framework; guaranteed representation on a newly created <a href="#">Al-Goon Advisory Council</a> with formal advisory standing before the Grand Goon Council; and a share of post-war natural resource extraction rights in the Al-Goon territories estimated at fifteen percent of total commercial value. These terms were extraordinarily generous by the standards of wartime mobilisation agreements and reflected Shahwi's understanding that sustainable alliance required genuine incentive structures, not merely coercive conscription.<sup><a href="#">[34]</a></sup></p>
+
+    <h4 class="sub-subsection-heading">Operations of the Al-Gooniyyin Raider Division</h4>
+
+    <p>The collectively designated <a href="#">Al-Gooniyyin Raider Division</a> ultimately comprised between 12,000 and 18,000 fighters drawn from nine tribal clans, organised into approximately forty autonomous raiding formations averaging 300–450 fighters each. They were lightly equipped by conventional standards — personal arms, light vehicle transport, portable communications equipment, and, in some units, man-portable anti-armour weapons supplied directly from Goonland's military arsenals — but this lightness of equipment was inseparable from the extraordinary mobility that constituted their primary tactical asset. Operating in terrain they had inhabited for generations, the Al-Gooniyyin could move forces of several thousand fighters across distances of 200 kilometres in under forty-eight hours, a capability that Coalition conventional forces, equipped with heavy armour and dependent on fixed logistics infrastructure, were entirely unable to match.<sup><a href="#">[35]</a></sup></p>
+
+    <p>The <b>Raid of the Red Dunes</b> (14–16 April 2067) stands as the Al-Gooniyyin's most operationally significant and historically studied engagement. Personally led by Shahwi, a combined force of approximately 3,000 militia fighters conducted a three-day assault on the Coalition's <a href="#">Forward Operating Base Khalid</a> — the primary logistical hub for Coalition operations in the southern theatre, situated on the edge of the Al-Goon desert frontier. The assault was notable for its tactical sophistication: the attacking force was divided into eight coordinated strike elements that simultaneously hit different sectors of the base's perimeter, preventing Coalition defenders from concentrating force at any single penetration point. Over three days of fighting, Coalition armoured assets valued at an estimated $2.4 billion were destroyed or captured, fourteen Coalition officers above the rank of Colonel were taken prisoner, and the base's fuel and ammunition stockpiles — sufficient to sustain approximately 45,000 Coalition troops for three weeks — were either destroyed or removed by retreating militia forces. The military impact of losing FOB Khalid forced a fundamental restructuring of Coalition logistics in the southern theatre that took six weeks to address and left Coalition ground forces in the region operating on critically reduced supplies during a period of intensive Goonland pressure.<sup><a href="#">[36]</a></sup></p>
+
+    <blockquote class="wiki-quote">
+      "A war is not won with clean hands — it is won with the right ones."
+      <cite>— Muhammad Adam Shahwi, attributed in memoirs of Al-Goon clan chieftain Sulayman al-Rashidi (pub. 2071)</cite>
+    </blockquote>
+
+    <h4 class="sub-subsection-heading">Post-War Status and Controversy</h4>
+
+    <p>The decision to incorporate irregular militia forces into Goonland's formal military structure drew sustained condemnation from the international community throughout and after the conflict. Malaysia and the United Kingdom formally submitted <a href="#">UN Security Council Resolution 3847</a>, requesting an international investigation into whether Shahwi's use of the Al-Gooniyyin violated the international laws of armed conflict governing the use of irregular forces. The resolution was ultimately vetoed by the United States, acting in its capacity as Goonland's principal external patron. The investigation was subsequently transferred to the <a href="#">UN Special Tribunal for Asymmetric Warfare Accountability</a>, where proceedings moved slowly due to jurisdictional disputes and evidentiary challenges arising from the classified nature of many of the relevant operational records.<sup><a href="#">[37]</a></sup></p>
+
+    <p>Within Goonland, Shahwi's post-war fulfilment of his negotiated commitments to the Al-Gooniyyin clans — granting them Protected Autonomous Region status and formal advisory representation — provoked significant political controversy. Several senior members of the Grand Goon Council argued that legitimising armed non-state actors within Goonland's constitutional framework set dangerous precedents for domestic governance and regional security. Their concerns proved prescient: multiple Al-Gooniyyin clans retained their weapons caches after the formal conclusion of hostilities, and low-level armed incidents in the Al-Goon region — sometimes directed against Goonland's own security services — continued into the early 2070s, representing a festering consequence of the wartime partnership that no post-war governance agreement fully resolved.<sup><a href="#">[38]</a></sup></p>
+
+    <h3 class="subsection-heading" id="changyang">Changyang He — Chief Military Strategist</h3>
+
+    <p><b>Changyang He</b> (贺长阳; born 1 June 2010, <a href="#">Harbin</a>; naturalised Goonland citizen 2039) served as Goonland's Chief Military Strategist and the principal architect of the Republic's conventional military campaign. A formally trained military theorist with doctorates from both the <a href="#">People's Liberation Army War College</a> and the <a href="#">Goonland Institute of Strategic Studies</a>, He was the author of Goonland's foundational military doctrine document, the <a href="#">Principles of Asymmetric Sufficiency</a> (2058), which had shaped the Republic's military modernisation programme throughout the 2060s and directly informed the strategic planning for the 2067 conflict.<sup><a href="#">[39]</a></sup></p>
+
+    <p>He is principally credited by military historians for the design and execution of the conflict's decisive turning point: the <a href="#">Battle of the Central Corridor</a> (May–July 2067). In a strategic manoeuvre widely compared to the most celebrated encirclement operations of twentieth-century conventional warfare, He coordinated a multi-axis advance that brought Goonland regular forces around the flanks of the Coalition's primary defensive line in the Central Corridor, cutting their supply connections to rear logistics bases while simultaneously — in perfect coordination with General Li's most ambitious deception campaign — deceiving Coalition command into repositioning their reserve forces to the wrong sector. The encirclement was complete within eleven days; the Coalition's attempt to break through the Goonland encirclement cost them an estimated 22,000 additional casualties before the order for a general retreat was given. The Battle of the Central Corridor is the operation most frequently cited in post-war analyses as the moment the war's outcome became strategically determined.<sup><a href="#">[40]</a></sup></p>
+
+    <h3 class="subsection-heading" id="ivan-yeow">Ivan Yeow — President of the Republic of Goonland</h3>
+
+    <p><b>Ivan Yeow</b> (born 27 November 2023, <a href="#">Singapore</a>; naturalised Goonland citizen 2044) assumed the presidency of Goonland in 2059 following a campaign that combined technologically sophisticated digital mobilisation with a foreign policy platform of assertive territorial nationalism. A former software entrepreneur whose internet-native political brand aligned naturally with Goonland's culture, Yeow had spent his first presidential term consolidating executive authority, modernising Goonland's military, and cultivating the bilateral relationships with Israel and the United States that would prove strategically critical in the 2067 conflict. His decision to authorise the October 2066 pre-emptive strike was taken against the advice of several senior members of his Cabinet, who warned that the move would crystallise the Coalition's formation and forfeit international sympathy. Yeow's counter-argument — that the intelligence assessment of an imminent Coalition mobilisation made pre-emption strategically necessary regardless of its diplomatic cost — was vindicated by subsequent events but remains contested among historians.<sup><a href="#">[41]</a></sup></p>
+
+    <p>Domestically, Yeow's presidency was celebrated in Goonland for the military victory it ultimately achieved, but increasingly questioned for the catastrophic human and economic cost at which that victory was purchased. By the conflict's conclusion, Goonland had lost between 40 and 55 percent of its standing military force, its economy had contracted by an estimated 34 percent from peak, and international sanctions from eight Coalition-aligned nations remained in effect. The term "Yeow Victory" circulated briefly in Goonland's domestic opposition media as an ironic designation before being displaced by the more internationally recognised "Goonland Victory" in academic and journalistic usage.<sup><a href="#">[42]</a></sup></p>
+
+    <h3 class="subsection-heading" id="kingsley">Kingsley — Field Commander, Western Front</h3>
+
+    <p><b>Kingsley</b> (full name withheld from public record under Goonland Military Privacy Statutes; born c. 2020; service designation Field Commander First Class) commanded Goonland's ground forces on the Western Front throughout the conflict, proving himself one of the most effective conventional battlefield commanders in the Republic's military history. Kingsley's tactical philosophy complemented General Li's strategic vision in an operationally symbiotic relationship: while Li's bureau manufactured confusion in Coalition command networks, Kingsley moved Goonland's ground forces with exceptional speed and precision to exploit the resulting decision paralysis before Coalition commanders could recover their situational awareness.<sup><a href="#">[43]</a></sup></p>
+
+    <p>Kingsley's most celebrated tactical achievement was the <a href="#">Western Salient Push</a> of June 2067, a rapid ground advance of approximately 180 kilometres executed over nine days by three Goonland armoured divisions. Coordinated explicitly with one of Li's communication jamming operations that had effectively blinded Coalition forward observers in the sector, the advance caught Western Front Coalition forces in a severely disadvantageous position and secured three strategically critical high-ground positions that were used as artillery platforms throughout the final phase of the war. Coalition after-action assessments characterised the Western Salient Push as a textbook example of combined-arms exploitation in degraded information environments — offering it as a case study, somewhat uncomfortably, in their own post-war training curricula.<sup><a href="#">[44]</a></sup></p>
+
+    <h3 class="subsection-heading" id="zirui">Zirui — Director, Nanjing Honey Select Modder Corps</h3>
+
+    <p><b>Zirui</b> (full legal name classified under Goonland State Security Ordinance; born c. 2000, <a href="#">Nanjing</a>) is perhaps the most enigmatic and least publicly documented senior figure in Goonland's wartime command structure. Before the 2067 conflict, Zirui led a loosely organised collective of digital content creators, software developers, and online media practitioners who had built an international reputation — and considerable notoriety — for their work in digital animation modification, synthetic media generation, and online influence operations operating in ethically ambiguous areas of internet culture. Their formal incorporation into Goonland's military structure, under the designation of the <a href="#">Nanjing Honey Select Modder Corps</a>, remains one of the conflict's most widely discussed and analytically contested developments.<sup><a href="#">[45]</a></sup></p>
+
+    <p>The Nanjing Corps' capabilities were, in effect, a hybrid between a conventional signals intelligence unit, a psychological operations bureau, and a sophisticated content production studio. Their technical assets included proprietary AI-powered synthetic media generation tools capable of producing convincing video, audio, and textual fabrications at scale; an extensive international network of social media accounts and content distribution channels; and deep expertise in the exploitation of platform recommendation algorithms to amplify influence operations content to targeted audiences. Under General Li's operational direction, these capabilities were deployed in the Synthetic Narrative Offensive, Operation Hollow Signal's disinformation overlay, and a sustained eighteen-month programme of targeted content designed to erode public trust in Coalition governments among their own domestic populations.<sup><a href="#">[46]</a></sup></p>
+
+    <h3 class="subsection-heading" id="mark-varughese">Mark Varughese — Supreme Leader of Kingdom City</h3>
+
+    <p><b>Mark Varughese</b> (born 7 February 2009, <a href="#">Kochi</a>, India; naturalised Kingdom City citizen 2032) was elected Supreme Leader of Kingdom City in 2054 in a constitutional referendum that granted the unified leadership role — combining the previously separate functions of political head of state and ecclesiastical authority — to a single individual for the first time in the city-state's history. A charismatic public speaker of extraordinary intellectual range, Varughese held advanced degrees in theology, political philosophy, and international law, and had built his leadership profile through two decades of advocacy for Kingdom City's distinctive governance model on the international stage. His vision of the city-state as a model for a religiously grounded, internationally engaged form of governance had won Kingdom City its extraordinary breadth of international alliances — alliances that proved both the city-state's greatest asset and, in their inherent coordination complexity, its most critical strategic vulnerability in the 2067 conflict.<sup><a href="#">[47]</a></sup></p>
+
+    <p>Varughese's wartime leadership has been assessed by historians as demonstrating genuine courage and significant political skill in extraordinarily difficult circumstances, while also exhibiting critical strategic failures rooted in an inability to reconcile the Coalition's diplomatic breadth with the coordination demands of modern warfare. His decision to concentrate command authority in his own hands streamlined Kingdom City's political decision-making but could not resolve the fundamental challenges of commanding twelve disparate national militaries. His post-war retention of leadership in the restructured Kingdom City government — agreed as part of the ceasefire terms — was interpreted by many international observers as evidence of his undiminished domestic authority despite military defeat.<sup><a href="#">[48]</a></sup></p>
+
+    <h3 class="subsection-heading" id="loh-bin">Loh Bin — High Chancellor and Church Representative</h3>
+
+    <p><b>Loh Bin</b> (born 19 January 2015, <a href="#">Penang</a>, Malaysia; naturalised Kingdom City citizen 2038) served as High Chancellor of Kingdom City and the Church's most senior administrative authority throughout the conflict. A former academic theologian whose intellectual works on the intersection of governance and faith had established him as the Church's pre-eminent doctrinal voice, Loh Bin was uniquely positioned to serve as the interface between Kingdom City's ecclesiastical authority and its international diplomatic relationships. His multilingual capabilities — he spoke Mandarin, Malay, English, Tamil, Korean, and Arabic — made him the Coalition's most effective diplomatic communicator, and he personally conducted the bilateral negotiations that secured India's naval commitment and Australia's air support in the critical weeks following Goonland's opening strikes.<sup><a href="#">[49]</a></sup></p>
+
+    <h3 class="subsection-heading" id="geonhee-park">Geonhee Park — Commander of Coalition Armed Forces</h3>
+
+    <p><b>Geonhee Park</b> (박건희; born 11 March 2008, <a href="#">Seoul</a>, Republic of Korea; assigned to Kingdom City Coalition command 2065) was a decorated veteran of the Republic of Korea Army's Strategic Planning Division, recruited to Kingdom City's international military advisory network in 2060 and elevated to the position of Coalition Armed Forces Commander in 2065 — a full year before the outbreak of hostilities. Park's early successes in the conflict's eastern theatre — particularly the defence of Kingdom City's eastern perimeter against Goonland's opening strikes, which significantly exceeded pre-war projections of Coalition defensive capability — generated considerable early confidence in Coalition command circles. His subsequent inability to counter General Li's psychological operations campaigns and Shahwi's southern raiding offensives reflected not so much personal failure as the inherent limitations of commanding an alliance of unprecedented complexity against an adversary that had specifically designed its strategy to exploit those limitations.<sup><a href="#">[50]</a></sup></p>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SECTION 5: MODDER CORPS -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <h2 class="section-heading" id="modder-corps">Goonland's Unconventional Warfare Division <span class="editsection">[<a href="#">edit</a>]</span></h2>
+
+    <p>The <a href="#">Nanjing Honey Select Modder Corps</a> (NHSMC) represented the most unprecedented and internationally scrutinised military formation deployed in the Kingdom City–Goonland War. Formally constituted as Goonland's Auxiliary Digital Warfare Division under the authority of General Jinduo Li's Strategic Operations Command, the Corps drew its personnel from a pre-war network of several thousand digital content creators, software engineers, AI researchers, and online media specialists who had previously operated as a loosely affiliated civilian collective with no formal military identity. Their conversion into a formal military auxiliary formation remains one of the most studied examples of rapid non-conventional force generation in modern military history.<sup><a href="#">[51]</a></sup></p>
+
+    <p>The Corps was organised into five specialist battalions, each focused on a distinct operational domain: the <a href="#">Synthetic Media Battalion</a> (responsible for the production of AI-generated fabricated content); the <a href="#">Platform Exploitation Battalion</a> (responsible for manipulating social media recommendation algorithms to amplify specific narratives); the <a href="#">Signal Infiltration Battalion</a> (responsible for technical support to communication jamming and spoofing operations); the <a href="#">Adversarial Narrative Battalion</a> (responsible for long-term erosion of Coalition public trust); and the <a href="#">Counter-Narrative Defense Battalion</a> (responsible for identifying and neutralising Coalition information operations targeting Goonland domestic audiences).<sup><a href="#">[52]</a></sup></p>
+
+    <p>Field Commander <a href="#">Kingsley</a>, commanding Goonland's ground forces on the Western Front, worked in systematic operational coordination with the Nanjing Corps throughout the conflict. The relationship between Kingsley's ground operations and Zirui's digital operations became one of the most studied examples of integrated conventional-digital warfare in any conflict of the era. Kingsley's tactical advances were routinely timed to exploit the windows of Coalition command confusion created by the Corps' signal jamming and disinformation operations, and conversely, the Corps' influence operations were calibrated to maximise exploitation of Coalition media attention generated by major Goonland ground advances. The integration was so seamless that Coalition intelligence analysts initially struggled to determine whether they were observing deliberate coordination or coincidental parallel effect — itself a consequence of the operational ambiguity that both Zirui and Kingsley had been specifically instructed to cultivate.<sup><a href="#">[53]</a></sup></p>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SECTION 6: INTERNATIONAL SUPPORT -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <h2 class="section-heading" id="international">International Support and Proxy Dynamics <span class="editsection">[<a href="#">edit</a>]</span></h2>
+
+    <div class="ambox">
+      <div class="ambox-icon">🌐</div>
+      <div>The <b>Kingdom City–Goonland War</b> is classified by the <a href="#">UN Department of Political and Peacebuilding Affairs</a> as the second instance in the 21st century of a formally recognised proxy conflict involving major power participation. See <a href="#">List of 21st Century Proxy Conflicts</a>.</div>
+    </div>
+
+    <p>The conflict rapidly assumed the character of a recognised proxy war due to the direct and substantial involvement of two external major powers — <a href="#">Israel</a> and the <a href="#">United States of America</a> — in support of Goonland, against a Coalition nominally representing twelve sovereign nations but anchored by several middle powers whose strategic alignment with Kingdom City reflected a broader civilisational and commercial calculation about the kind of international order they wished to inhabit.<sup><a href="#">[54]</a></sup></p>
+
+    <p><a href="#">Israel</a>'s contribution to Goonland's war effort was primarily technical and intelligence-driven, reflecting decades of bilateral collaboration between the two states' digital security and signals intelligence communities. The provision of <a href="#">Sigint Package Omega</a> — Israel's most advanced signals intelligence penetration suite — to Goonland's Strategic Operations Command in the weeks before the October 2066 opening strike was among the most consequential transfers of military technology in the conflict. It enabled Goonland to penetrate Kingdom City's encrypted communication architecture with a speed and depth that Kingdom City's cyber-defence systems were wholly unprepared to counter. Israeli intelligence personnel were embedded within General Li's Strategic Operations Division throughout the conflict, providing real-time technical support and analytical expertise to Goonland's signal operations. Israel's decision to provide this level of support was motivated by multiple strategic calculations, including the perception that a Goonland victory would weaken the influence of several Coalition members whose regional policies were viewed adversely in Jerusalem.<sup><a href="#">[55]</a></sup></p>
+
+    <p>The <a href="#">United States</a>' contribution was broader in scope and more materially significant in aggregate terms. American support encompassed the provision of advanced drone strike systems, satellite-based surveillance intelligence provided through an existing bilateral intelligence-sharing agreement, financial credit facilities allowing Goonland to sustain wartime procurement despite emerging economic pressures, and a United States Navy carrier group positioned in the surrounding maritime region in a deterrent capacity explicitly designed to discourage Coalition naval forces from escalating maritime operations beyond the blockade. The American contribution was authorised under an executive military assistance designation that allowed it to proceed without full Congressional legislative approval, a decision that subsequently generated significant domestic political controversy within the United States.<sup><a href="#">[56]</a></sup></p>
+
+    <table class="wikitable">
+      <tr><th colspan="3" class="table-header">International Contributions to the Kingdom City Coalition</th></tr>
+      <tr><th>Nation</th><th>Primary Role</th><th>Notes</th></tr>
+      <tr><td>🇲🇾 Malaysia</td><td>Primary logistics hub; largest ground troop contributor; principal financial backer</td><td>Contribution reduced in March 2067 following Synthetic Narrative Offensive disinformation crisis</td></tr>
+      <tr><td>🇦🇺 Australia</td><td>Air support; advanced multi-role fighter contingent</td><td>Forward-based in eastern Indian Ocean; conducted 34% of Coalition air strike sorties</td></tr>
+      <tr><td>🇬🇧 United Kingdom</td><td>Naval assets; senior advisory personnel; submarine warfare capability</td><td>Two Astute-class successor submarines deployed; significant intelligence support</td></tr>
+      <tr><td>🇮🇳 India</td><td>Naval assets; advisory personnel; logistics support</td><td>Indian Navy's eastern fleet contributed two carrier escort groups</td></tr>
+      <tr><td>🇮🇩 Indonesia</td><td>Maritime blockade coordination</td><td>Joint operations with Singapore; 140 maritime patrol vessel deployments</td></tr>
+      <tr><td>🇸🇬 Singapore</td><td>Maritime blockade coordination; signals intelligence support</td><td>Provided Coalition's most sophisticated maritime surveillance infrastructure</td></tr>
+      <tr><td>🇦🇪 UAE</td><td>Financial support; diplomatic facilitation</td><td>Hosted three rounds of mid-conflict Coalition coordination summits</td></tr>
+      <tr><td>🇰🇭 Cambodia</td><td>Ground troop supplement</td><td>Contributed 8,000 infantry; suffered disproportionate casualties in eastern theatre</td></tr>
+      <tr><td>🇱🇰 Sri Lanka</td><td>Ground troop supplement; naval patrol</td><td>Sri Lankan naval units participated in blockade operations</td></tr>
+      <tr><td>🇿🇦 South Africa</td><td>Humanitarian logistics; peacekeeping contingent</td><td>Led African Coalition Subcommittee; contributed 4,200 humanitarian personnel</td></tr>
+      <tr><td>🇧🇼 Botswana</td><td>Peacekeeping; humanitarian</td><td>Second-largest African Coalition contributor by personnel</td></tr>
+      <tr><td>🇿🇲 Zambia</td><td>Humanitarian logistics</td><td>Administered Coalition field medical infrastructure in southern theatre</td></tr>
+    </table>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SECTION 7: COURSE OF THE WAR -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <h2 class="section-heading" id="course">Course of the War <span class="editsection">[<a href="#">edit</a>]</span></h2>
+
+    <h3 class="subsection-heading" id="phase1">Phase I: Opening Strikes (October–November 2066)</h3>
+
+    <p>The war opened at 0347 hours local time on 12 October 2066 with a coordinated <a href="#">Goonland pre-emptive strike</a> against Kingdom City's eastern communication infrastructure. The operation, designated <a href="#">Dawn Protocol Zero</a>, had been in planning for eighteen months and was executed with a precision that reflected the extensive preparatory intelligence work conducted by Israeli signals units embedded with Goonland's Strategic Operations Command. The primary targets of the opening strikes were Kingdom City's six eastern communication relay towers — the physical backbone of the city-state's encrypted long-range communication with its Coalition partners — and three radar installations whose destruction would open corridors for subsequent Goonland aerial penetration.<sup><a href="#">[57]</a></sup></p>
+
+    <p>The strikes were carried out primarily by American-supplied drone systems augmented by Goonland's domestically developed precision cruise missiles. All six communication towers were destroyed within the first two hours of the operation; two of the three radar installations were eliminated before dawn, with the third destroyed in a follow-up strike at 1100 hours. The operational precision of the opening strikes exceeded even Goonland's own planners' projections and caused immediate communication disruption across the Coalition's command network that amplified significantly when Operation Hollow Signal's jamming measures were activated three days later.<sup><a href="#">[58]</a></sup></p>
+
+    <p>Kingdom City's defensive response, under Commander Geonhee Park's direction, proved more resilient than Goonland had projected. Pre-positioned defensive forces in the eastern perimeter conducted an effective fighting withdrawal that cost Goonland's advancing ground forces significantly more than anticipated, establishing a pattern — Goonland winning decisively in the strategic and digital domains while paying higher-than-expected costs in conventional ground engagements — that would characterise the entire conflict. Within the Coalition's command structure, the opening strikes created immediate political controversy: Malaysia demanded extraordinary Coalition consultation meetings before authorising the commitment of its primary ground force contingent, a three-day delay that Kingdom City's own commanders later identified as a significant missed opportunity to consolidate their defensive posture.<sup><a href="#">[59]</a></sup></p>
+
+    <h3 class="subsection-heading" id="phase2">Phase II: The Southern Campaign (December 2066–February 2067)</h3>
+
+    <p>While Goonland's regular forces maintained conventional pressure on Kingdom City's northern and central defensive lines, Vice President Shahwi's Al-Gooniyyin Raider Division launched its principal operational campaign across the southern and eastern theatres from December 2066. Moving in coordination with Goonland's regular southern flank — but operating largely independently and with a speed that Coalition conventional forces could not match — the Al-Gooniyyin conducted a sustained series of supply line interdictions, dawn raids, and capture operations that progressively dismantled the Coalition's logistical infrastructure in the entire southern region.<sup><a href="#">[60]</a></sup></p>
+
+    <p>Coalition Commander Park initially underestimated the military significance of the Al-Gooniyyin operations, characterising them in internal communications — later recovered and published in the post-war <a href="#">Coalition After-Action Report of 2069</a> — as "bandit harassment rather than strategic threat." This assessment proved catastrophically incorrect. By January 2067, Al-Gooniyyin raids had destroyed or captured an estimated 40 percent of the Coalition's southern supply infrastructure, forcing a consolidation of remaining logistics assets into fewer, larger convoys that became correspondingly more vulnerable to the coordinated ambushes that Shahwi's forces had evolved to execute with devastating efficiency. Three of the six major supply convoys dispatched from Malaysia to Coalition southern positions in January 2067 never reached their destinations.<sup><a href="#">[61]</a></sup></p>
+
+    <h3 class="subsection-heading" id="phase3">Phase III: Digital Warfare and Psychological Blitz (January–April 2067)</h3>
+
+    <p>The most novel and internationally consequential phase of the Kingdom City–Goonland War was General Jinduo Li's coordinated psychological and digital warfare campaign, which reached its operational peak between January and April 2067. The campaign, encompassing multiple overlapping operations conducted simultaneously across diplomatic, media, and communication domains, constitutes the largest and most systematically documented deployment of <a href="#">Synthetic Narrative Warfare</a> as a formal military strategy in the history of armed conflict.<sup><a href="#">[62]</a></sup></p>
+
+    <p>The <a href="#">Synthetic Narrative Offensive</a> of March 2067 was the campaign's pivotal operation. In its construction, Zirui's Nanjing Corps produced fourteen distinct categories of fabricated material: doctored diplomatic cables, manipulated video statements attributed to Coalition leaders, fabricated internal Church communications, synthetic audio recordings purporting to capture private conversations among senior Coalition figures, and a sustained output of AI-generated social media content portraying deep internal division within the Coalition's political leadership. The material was disseminated through a combination of hacked social media accounts with large pre-existing followings, fabricated "leak" operations targeting international news organisations' internal tip systems, and direct insertion into communication networks monitored by Coalition intelligence agencies — ensuring that the fabrications reached not only public audiences but the intelligence communities whose assessments would inform Coalition political decisions.<sup><a href="#">[63]</a></sup></p>
+
+    <p>The diplomatic fractures generated by the March Offensive were severe and enduring. The fabricated Malaysian-Singaporean communications triggered a formal diplomatic protest from Kuala Lumpur to Singapore, followed by three weeks of escalating bilateral tension that ultimately required direct intervention by UAE mediation before the crisis was contained. During this period, Malaysia withheld two scheduled logistics convoy dispatches to Coalition forward bases and recalled its ambassador from Kingdom City for "consultations" — a withdrawal widely interpreted as diplomatic signalling of dissatisfaction with Coalition leadership that, whatever its actual motivation, had precisely the military effect that General Li's bureau had designed the fabrication to produce.<sup><a href="#">[64]</a></sup></p>
+
+    <h3 class="subsection-heading" id="phase4">Phase IV: The Battle of the Central Corridor (May–July 2067)</h3>
+
+    <p>The <a href="#">Battle of the Central Corridor</a> was the decisive conventional military engagement of the war and the operation most consistently cited by military historians as the moment at which Goonland's strategic victory became operationally irreversible. Designed by Chief Military Strategist Changyang He and executed in deliberate coordination with General Li's most ambitious conventional deception campaign, the Battle transformed the entire operational geometry of the conflict in the space of approximately eleven days, converting a protracted attritional stalemate into a decisive encirclement that broke the Coalition's capacity for organised resistance.<sup><a href="#">[65]</a></sup></p>
+
+    <p>He's design for the operation was elegant in its strategic logic. The Central Corridor — a 340-kilometre strip of territory connecting Kingdom City's primary defensive line to its rear logistics infrastructure — was both the Coalition's most critical strategic asset and its most structurally vulnerable point: long and relatively narrow, requiring effective communication and coordination along its entire length, and inherently difficult to defend in multiple directions simultaneously. He's plan called for a two-phase operation: first, a series of coordinated feint attacks in the northern sector, conducted with sufficient intensity to convince Coalition command that the primary Goonland offensive was developing there, drawing Coalition reserve forces northward; second, a rapid three-axis envelopment of the Central Corridor, with Goonland armoured columns advancing simultaneously from both flanks and a third column driving directly up the Corridor's centre once the flanking forces had secured their positions.<sup><a href="#">[66]</a></sup></p>
+
+    <p>The deception operation supporting the Battle was Li's most sophisticated. For six weeks preceding the assault, his bureau flooded Coalition intelligence channels with fabricated operational planning documents, synthetic communications among fictional Goonland commanders, and a carefully choreographed sequence of physical movements by dummy formations designed to reinforce the impression that the primary attack would come from the north. Coalition Commander Park committed his two primary reserve armoured brigades — the 3rd Malaysian Heavy Armour Brigade and the 7th Indian Mechanised Brigade — to the northern sector on the basis of this intelligence, placing them 280 kilometres from the actual point of main effort when the Central Corridor assault commenced on 18 May 2067.<sup><a href="#">[67]</a></sup></p>
+
+    <p>Simultaneously, Shahwi's Al-Gooniyyin forces cut Coalition retreat routes through the southern passage, completing a three-dimensional encirclement that left the Coalition's primary Central Corridor defensive force — approximately 85,000 personnel from seven national contingents — without supply lines, without reinforcement, and effectively without a coherent defensive doctrine for their unexpected tactical situation. The encircled Coalition forces conducted seventeen days of fighting withdrawal attempts before their command structure collapsed and unit-level ceasefire negotiations began. Park formally ordered a general retreat from the Central Corridor on 8 June 2067. The retreat itself cost the Coalition an additional 22,000 casualties under sustained Goonland pursuit operations.<sup><a href="#">[68]</a></sup></p>
+
+    <h3 class="subsection-heading" id="phase5">Phase V: Endgame and Ceasefire (August–September 2067)</h3>
+
+    <p>Following the catastrophic Coalition defeat in the Central Corridor, the conflict's final phase was characterised by a rapid deterioration of Kingdom City's strategic position and a series of increasingly desperate diplomatic initiatives to secure ceasefire terms. Mark Varughese initiated back-channel communications with Goonland's leadership through Swiss mediators in late July 2067, proposing a range of negotiated outcomes that would preserve Kingdom City's core governance structure and sovereignty while acknowledging Goonland's territorial claims. Ivan Yeow's government, well aware that Goonland's military was itself approaching the limits of its sustainable capacity — casualty rates in the regular forces had by July 2067 reached approximately 45 percent of pre-war strength — indicated willingness to negotiate but insisted on unconditional cessation of Coalition military activities as a precondition.<sup><a href="#">[69]</a></sup></p>
+
+    <p>The Coalition's internal cohesion had by August 2067 effectively collapsed. Malaysia, whose financial and logistical support had been the Coalition's primary sustaining resource, formally notified Varughese in late July that it was withdrawing its ground force contingent from forward positions — a decision precipitated by a combination of the Synthetic Narrative Offensive's persistent damage to domestic political support for the war effort, the logistical devastation inflicted by the Al-Gooniyyin campaign, and Malaysia's own deteriorating economic position after nearly a year of wartime expenditure. Without Malaysia's commitment, the Coalition's remaining operational capability was insufficient to challenge Goonland's territorial gains, and Kingdom City's military position was no longer defensible. Kingdom City's unconditional ceasefire request was formally transmitted to Goonland's government on 12 September 2067 and accepted two days later, with a formal cessation of hostilities taking effect at 0600 hours on 14 September 2067.<sup><a href="#">[70]</a></sup></p>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SECTION 8: KEY BATTLES -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <h2 class="section-heading" id="key-battles">Key Battles and Operations <span class="editsection">[<a href="#">edit</a>]</span></h2>
+
+    <table class="wikitable">
+      <tr><th colspan="4" class="table-header">Principal Engagements of the Kingdom City–Goonland War</th></tr>
+      <tr><th>Operation / Battle</th><th>Date</th><th>Outcome</th><th>Significance</th></tr>
+      <tr><td><a href="#">Dawn Protocol Zero</a> (Opening Strikes)</td><td>12–14 Oct 2066</td><td>Goonland victory</td><td>Destroyed Kingdom City's eastern communication infrastructure; initiated the conflict</td></tr>
+      <tr><td><a href="#">Operation Hollow Signal</a></td><td>26 Oct–11 Dec 2066</td><td>Goonland strategic success</td><td>47-day jamming of Coalition encrypted communications; decisive early intelligence advantage</td></tr>
+      <tr><td><a href="#">Eastern Perimeter Defence</a></td><td>Oct–Nov 2066</td><td>Coalition partial success</td><td>Geonhee Park's most effective defensive operation; exceeded Goonland's loss projections</td></tr>
+      <tr><td><a href="#">Al-Gooniyyin Supply Line Campaign</a></td><td>Dec 2066–Apr 2067</td><td>Goonland / Al-Gooniyyin victory</td><td>Systematic destruction of 40%+ of Coalition southern logistics; strategic isolation of southern positions</td></tr>
+      <tr><td><a href="#">Raid of the Red Dunes</a></td><td>14–16 Apr 2067</td><td>Decisive Goonland victory</td><td>Destruction of FOB Khalid; $2.4bn in Coalition assets lost; 14 Coalition officers captured</td></tr>
+      <tr><td><a href="#">Synthetic Narrative Offensive</a></td><td>Mar–May 2067</td><td>Goonland strategic success</td><td>Triggered Malaysia-UK diplomatic crisis; reduced Malaysian Coalition commitment; fractured Coalition unity</td></tr>
+      <tr><td><a href="#">Western Salient Push</a></td><td>Jun 2067</td><td>Goonland victory</td><td>180km advance in 9 days; secured critical artillery positions for final phase</td></tr>
+      <tr><td><a href="#">Battle of the Central Corridor</a></td><td>18 May–8 Jun 2067</td><td>Decisive Goonland victory</td><td>Encirclement of 85,000 Coalition forces; strategic turning point; 22,000 additional Coalition casualties in retreat</td></tr>
+      <tr><td><a href="#">Final Coalition Retreat</a></td><td>Jun–Aug 2067</td><td>Goonland pursuit</td><td>Collapse of organised Coalition resistance; Goonland territorial consolidation</td></tr>
+      <tr><td><a href="#">Ceasefire Negotiations</a></td><td>Aug–Sep 2067</td><td>Goonland acceptance</td><td>Kingdom City unconditional ceasefire request; formal hostilities end 14 Sep 2067</td></tr>
+    </table>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SECTION 9: CASUALTIES -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <h2 class="section-heading" id="casualties">Casualties and Losses <span class="editsection">[<a href="#">edit</a>]</span></h2>
+
+    <div class="casualty-box">
+      <div class="casualty-box-title">Estimated Casualties — Kingdom City–Goonland War (2066–2067)</div>
+      <table>
+        <tr><td colspan="2" style="background:#eaecf0;font-weight:bold;text-align:center;padding:4px;">Republic of Goonland</td></tr>
+        <tr><td>Military killed in action</td><td>~95,000–140,000</td></tr>
+        <tr><td>Military wounded</td><td>~200,000+</td></tr>
+        <tr><td>Missing in action</td><td>~18,000</td></tr>
+        <tr><td>Al-Gooniyyin Raider casualties</td><td>~4,200 (est.)</td></tr>
+        <tr><td>% of pre-war standing force lost</td><td>40–55%</td></tr>
+        <tr><td colspan="2" style="background:#eaecf0;font-weight:bold;text-align:center;padding:4px;">Kingdom City Coalition (combined)</td></tr>
+        <tr><td>Military killed in action</td><td>~62,000–88,000</td></tr>
+        <tr><td>Military wounded</td><td>~160,000+</td></tr>
+        <tr><td>Prisoners of war</td><td>~14 senior officers confirmed; ~3,400 others</td></tr>
+        <tr><td>Coalition armoured assets lost</td><td>Significant (est. $4.2bn total)</td></tr>
+        <tr><td colspan="2" style="background:#eaecf0;font-weight:bold;text-align:center;padding:4px;">Civilian</td></tr>
+        <tr><td>Civilian dead</td><td>~28,000 (disputed; range: 18,000–41,000)</td></tr>
+        <tr><td>Internally displaced</td><td>~400,000</td></tr>
+        <tr><td>Refugees (international)</td><td>~85,000</td></tr>
+        <tr><td colspan="2" style="background:#cee0f2;font-weight:bold;text-align:center;padding:4px;">Total estimated dead (all parties): 180,000–240,000</td></tr>
+      </table>
+    </div>
+
+    <p>The Kingdom City–Goonland War produced casualties of a scale that, relative to the size of the primary belligerents, ranks it among the most proportionally devastating armed conflicts of the twenty-first century. Goonland's losses were particularly catastrophic in relative terms: with a pre-war military of approximately 340,000 active-duty personnel, the Republic sustained between 95,000 and 140,000 killed in action across eleven months of fighting — a loss rate that would have been considered operationally unsustainable by the doctrinal standards of most contemporary military establishments. That Goonland continued fighting and ultimately prevailed despite these losses reflects the combination of its strategic gains — particularly after the Central Corridor victory — and the domestic political narrative cultivated by President Yeow's government, which framed the casualties as necessary sacrifices for the Republic's sovereignty and strategic survival.<sup><a href="#">[71]</a></sup></p>
+
+    <p>Civilian casualties remain a subject of active dispute. Goonland's official post-war accounting cited 18,400 civilian deaths directly attributable to the conflict, while Kingdom City Coalition governments and independent humanitarian organisations estimated figures ranging between 28,000 and 41,000. The disparity primarily reflects disagreement over the classification of casualties in the Al-Goon conflict zone, where the irregular nature of Al-Gooniyyin operations made distinction between combatant and civilian deaths particularly difficult to establish, and where Goonland's government declined to allow independent humanitarian access throughout the conflict.<sup><a href="#">[72]</a></sup></p>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SECTION 10: AFTERMATH -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <h2 class="section-heading" id="aftermath">Aftermath <span class="editsection">[<a href="#">edit</a>]</span></h2>
+
+    <p>The <a href="#">Treaty of the Central Corridor</a>, signed on 3 November 2067 following six weeks of post-ceasefire negotiations conducted in Geneva under UN auspices, established the formal post-war framework between the Republic of Goonland and the Kingdom City Coalition. Its key provisions included: formal Coalition recognition of Goonland's sovereignty over the contested Goon Straits islands; establishment of a demilitarised zone along the eastern territorial boundaries; formal recognition of the Al-Goon Protected Autonomous Region within Goonland's constitutional framework; a programme of reparations payable by the Coalition to Goonland for pre-war military incursions in the Al-Goon region; and Kingdom City's retention of its existing governance structure under Supreme Leader Mark Varughese, with modifications to its military alliance commitments limiting its capacity to form future collective security arrangements targeting Goonland specifically.<sup><a href="#">[73]</a></sup></p>
+
+    <p>Goonland's post-war economic situation was severe. The combination of wartime expenditure, international sanctions imposed by eight Coalition-aligned nations, and the disruption to commercial activity caused by eleven months of active hostilities produced an economic contraction estimated at between 29 and 34 percent of pre-war GDP. The sanctions regime, led by Malaysia and the United Kingdom, targeted Goonland's technology exports and financial sector access and remained partially in effect into the early 2070s. President Yeow's domestic approval ratings, while initially elevated by the declaration of military victory, declined sharply through 2068 and 2069 as the full economic cost of the conflict became apparent to Goonland's civilian population.<sup><a href="#">[74]</a></sup></p>
+
+    <p>The instability in the Al-Goon region — generated by the failure to fully disarm the Al-Gooniyyin Raider Division's constituent clans following the conflict's end — became a persistent feature of Goonland's post-war domestic political landscape. Between 2068 and 2073, the Al-Goon region experienced at least forty-three significant armed incidents between tribal militia forces and Goonland's security services, several of which resulted in casualties among civilian populations. The <a href="#">Al-Goon Autonomy Commission</a>, established under the Treaty's provisions to manage the region's transition to formal autonomous governance, was widely characterised by independent analysts as underfunded and politically marginalised within Goonland's post-war governmental priorities. Shahwi's personal standing, elevated to legendary status in Goonland's wartime national narrative, was gradually complicated by the persistence of Al-Goon instability — a consequence that critics argued he had been warned about and had dismissed.<sup><a href="#">[75]</a></sup></p>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SECTION 11: WAR CRIMES -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <h2 class="section-heading" id="war-crimes">War Crimes Investigations and International Legal Proceedings <span class="editsection">[<a href="#">edit</a>]</span></h2>
+
+    <p>The Kingdom City–Goonland War generated multiple distinct international legal proceedings, addressing the range of unprecedented and contested military practices deployed by Goonland's forces throughout the conflict. These proceedings represented some of the most significant tests of the adequacy of existing international humanitarian law frameworks for the conditions of mid-21st-century warfare, and their outcomes — or more precisely, the difficulties encountered in reaching any outcomes — substantially informed subsequent efforts to codify international legal standards for digital and psychological warfare.<sup><a href="#">[76]</a></sup></p>
+
+    <p>The <a href="#">UN Special Committee on Digital Warfare Ethics</a> launched a comprehensive investigation into Goonland's Synthetic Narrative Offensive in October 2067. The Committee's central legal question was whether the deployment of AI-generated disinformation as a military instrument — specifically, fabricated diplomatic communications designed to fracture a military alliance — constituted a violation of existing prohibitions on perfidy under the <a href="#">Geneva Conventions</a> and their Additional Protocols. The investigation faced substantial evidentiary and jurisdictional challenges: Goonland declined to recognise the Committee's mandate, General Li declined to provide testimony, and Zirui's identity and legal accountability remained obscured by Goonland's military privacy statutes. After three years of proceedings, the Committee issued a report in 2070 concluding that existing international humanitarian law frameworks were "inadequately equipped" to address synthetic media warfare, and recommending the development of a new international treaty instrument — recommendations that remained at the stage of preliminary diplomatic negotiation as of the mid-2070s.<sup><a href="#">[77]</a></sup></p>
+
+    <p>The question of the Al-Gooniyyin's legal status generated a parallel set of proceedings. Under existing international law — specifically, the requirements of <a href="#">Article 4 of the Third Geneva Convention</a> governing the legal definition of lawful combatants — irregular forces must meet specific criteria including wearing distinctive insignia, carrying arms openly, and conducting operations in accordance with the laws of armed conflict. Malaysia and the United Kingdom argued that the Al-Gooniyyin failed to meet several of these criteria, particularly in relation to their psychological terror operations and the deliberate targeting of civilian logistics infrastructure. The United States veto of the proposed Security Council investigation forced the matter to the Special Tribunal for Asymmetric Warfare Accountability, where it proceeded through 2074 without reaching a final determination on individual criminal responsibility.<sup><a href="#">[78]</a></sup></p>
+
+    <p>General Jinduo Li's controversial award of the <a href="#">Goonland Order of Strategic Excellence (First Class)</a> in October 2067 drew eleven formal diplomatic protests from Coalition-aligned nations at the United Nations General Assembly — making it one of the most widely formally protested domestic military decorations in the UN's institutional history. The protests were legally non-binding and had no material consequence for Li's award, but their symbolic significance as a collective international statement on the unacceptability of Li's methods was widely noted in subsequent academic and policy literature on the governance of digital warfare.<sup><a href="#">[79]</a></sup></p>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SECTION 12: LEGACY -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <h2 class="section-heading" id="legacy">Legacy <span class="editsection">[<a href="#">edit</a>]</span></h2>
+
+    <p>The Kingdom City–Goonland War's legacy extends across several distinct domains — military doctrine, international law, political theory, and popular cultural vocabulary — each reflecting a different dimension of the conflict's unprecedented character and disproportionate consequences relative to its geographic scope and duration.</p>
+
+    <h3 class="subsection-heading">Military Doctrine</h3>
+
+    <p>General Jinduo Li's doctrine of <a href="#">Strategic Exhaustion</a> is now taught as a dedicated module in military strategy curricula at more than thirty national military academies and civilian strategic studies programmes worldwide. The doctrine's central insight — that in coalition conflicts, psychological cohesion is more valuable than numerical strength, and therefore more worth attacking — has been identified by military theorists as a fundamental contribution to the theory of asymmetric warfare equivalent in intellectual significance to the doctrinal innovations of earlier eras. It is simultaneously studied as a masterclass in modern warfare and condemned, with equal analytical rigour, as a blueprint for ethically unconscionable conflict in which the distinction between legitimate military operations and prohibited perfidious deception becomes operationally incoherent.<sup><a href="#">[80]</a></sup></p>
+
+    <p>Shahwi's <a href="#">Al-Gooniyyin Recruitment Model</a> has been adopted as a case study in both "effective practices" and "cautionary examples" curricula in programmes on asymmetric warfare and irregular force generation. Its effectiveness as a template for rapid mobilisation of indigenous irregular forces — generating 12,000–18,000 combat-effective fighters within seven weeks through a combination of negotiated incentives and symbolic legitimisation — is universally acknowledged. Its long-term consequences — the persistent armed instability in the Al-Goon region, the international legal controversy surrounding the militias' conduct, and the domestic political difficulties generated by legitimising non-state armed actors — are equally universally noted as cautionary constraints on the model's replicability in other contexts.<sup><a href="#">[81]</a></sup></p>
+
+    <h3 class="subsection-heading">The "Goonland Victory" in Political Language</h3>
+
+    <p>The term <i><a href="#">Goonland Victory</a></i> entered geopolitical and popular lexicon within months of the conflict's conclusion and has proven remarkably durable as a linguistic designation for a particular type of strategic outcome. Distinguished from the classical <i>Pyrrhic victory</i> primarily by its specifically digital-warfare connotations and by the additional element of reputational damage — Goonland's international standing was substantially degraded by the war despite its military success — the term is now routinely employed by commentators and analysts to describe any strategic victory achieved at costs so disproportionate to the objectives secured as to constitute, in functional terms, a form of strategic defeat. Several political scientists have argued that the "Goonland Victory" represents a genuinely new category of strategic outcome characteristic of the mid-21st century information environment, in which the reputational and legal costs of achieving military objectives through novel and internationally condemned methods may permanently exceed those objectives' geopolitical value.<sup><a href="#">[82]</a></sup></p>
+
+    <h3 class="subsection-heading">International Law and Digital Warfare</h3>
+
+    <p>Perhaps the war's most enduring legacy is the profound inadequacy it revealed in existing international legal frameworks for governing the conduct of digital and psychological warfare. The Synthetic Narrative Offensive, Operation Hollow Signal, and the Nanjing Modder Corps' sustained influence operations all fell into legal grey zones where existing Geneva Conventions provisions, designed for the physical and kinetic realities of twentieth-century armed conflict, provided insufficient guidance for their prohibition or regulation. The UN's subsequent <a href="#">Geneva Digital Protocol Initiative</a> — a multilateral treaty development process launched in 2069 and still ongoing as of 2075 — represents the most ambitious attempt to codify international humanitarian law for the information domain since the original Geneva Conventions were drafted. Its slow progress reflects the depth of geopolitical disagreement about where the permissible boundaries of information warfare should lie — disagreements in which the Kingdom City–Goonland War's contested legacy plays a continuous and central role.<sup><a href="#">[83]</a></sup></p>
+
+    <h3 class="subsection-heading">Cultural and Academic Reception</h3>
+
+    <p>The conflict has generated a substantial body of academic, journalistic, and popular cultural response. As of 2074, more than 340 peer-reviewed academic papers, fourteen major monographs, and six documentary productions have been devoted in whole or significant part to analysing the war's military, political, and legal dimensions. <i>Strategic Exhaustion: The Li Doctrine and the Future of Warfare</i> (2069), by <a href="#">Dr. Amara Diallo</a> of the <a href="#">International Institute for Strategic Studies</a>, remains the most widely cited academic analysis. <i>The Goon War: Pyrrhic Triumph in the Digital Age</i> (2070), by investigative journalist <a href="#">Priya Nayar</a>, represents the most comprehensive journalistic reconstruction of the conflict based on primary documentation from both sides. Within Goonland itself, the war occupies a deeply ambivalent place in national memory: simultaneously a source of patriotic pride in the Republic's ultimate military success and a subject of deep public grief for its catastrophic human cost. A national memorial to Goonland's war dead — <i>The Cost of Victory</i> — was inaugurated in Goonhaven in 2071 and has become one of the city's most visited public spaces.<sup><a href="#">[84]</a></sup></p>
+
+    <!-- NAVBOX -->
+    <div class="navbox">
+      <div class="navbox-title">Kingdom City–Goonland War — Related Articles</div>
+      <table>
+        <tr><td>Belligerents</td><td><a href="#">Republic of Goonland</a> · <a href="#">Kingdom City</a> · <a href="#">Kingdom City Coalition</a> · <a href="#">Al-Gooniyyin Raider Division</a> · <a href="#">Nanjing Honey Select Modder Corps</a></td></tr>
+        <tr><td>Leadership</td><td><a href="#">Ivan Yeow</a> · <a href="#">Jinduo Li</a> · <a href="#">Muhammad Adam Shahwi</a> · <a href="#">Changyang He</a> · <a href="#">Kingsley</a> · <a href="#">Zirui</a> · <a href="#">Mark Varughese</a> · <a href="#">Loh Bin</a> · <a href="#">Geonhee Park</a></td></tr>
+        <tr><td>Major operations</td><td><a href="#">Dawn Protocol Zero</a> · <a href="#">Operation Hollow Signal</a> · <a href="#">Synthetic Narrative Offensive</a> · <a href="#">Raid of the Red Dunes</a> · <a href="#">Battle of the Central Corridor</a> · <a href="#">Western Salient Push</a></td></tr>
+        <tr><td>Treaties & law</td><td><a href="#">Treaty of the Central Corridor</a> · <a href="#">UN Special Committee on Digital Warfare Ethics</a> · <a href="#">Geneva Digital Protocol Initiative</a> · <a href="#">Special Tribunal for Asymmetric Warfare Accountability</a></td></tr>
+        <tr><td>Legacy</td><td><a href="#">Goonland Victory (term)</a> · <a href="#">Strategic Exhaustion Doctrine</a> · <a href="#">Al-Gooniyyin Recruitment Model</a> · <a href="#">Al-Goon Protected Autonomous Region</a></td></tr>
+        <tr><td>See also</td><td><a href="#">Goonland Presidential History</a> · <a href="#">Kingdom City Church Governance</a> · <a href="#">2067 International Proxy Conflicts</a> · <a href="#">Jinduo Li: A General's Legacy</a></td></tr>
+      </table>
+    </div>
+
+    <!-- REFERENCES -->
+    <h2 class="section-heading" id="references">References <span class="editsection">[<a href="#">edit</a>]</span></h2>
+    <div class="reflist">
+      <ol>
+        <li>Diallo, A. (2069). <i>Strategic Exhaustion: The Li Doctrine and the Future of Warfare</i>. International Institute for Strategic Studies Press. pp. 1–14.</li>
+        <li>Nayar, P. (2070). <i>The Goon War: Pyrrhic Triumph in the Digital Age</i>. Harper Strategic. pp. 22–31.</li>
+        <li>UN Department of Political Affairs. (2067). <i>Special Report: Goonland Sovereignty Conflict — Origins and Immediate Causation</i>. UN Pub. A/2067/48.</li>
+        <li>Diallo, A. (2069), pp. 201–215.</li>
+        <li>Kim, J. & Osei, K. (2068). "The Genesis of Goonland: Internet Culture and State Formation." <i>Journal of Contemporary Political Theory</i>, 14(3), 88–116.</li>
+        <li>Goonland National Statistics Office. (2061). <i>Census of the Republic: Demographic Report 2060</i>. Goonhaven: GNSO Press.</li>
+        <li>Nayar, P. (2070), pp. 44–52.</li>
+        <li>Kingdom City Constitutional Authority. (2045). <i>The Constitutional Charter of Kingdom City (Revised Edition)</i>. Kingdom City: KCA Publications.</li>
+        <li>Global Port Intelligence Network. (2066). <i>Annual Maritime Trade Index</i>. Singapore: GPIN.</li>
+        <li>Osei, K. (2071). <i>Ecclesiastical Power in the 21st Century: The Kingdom City Model</i>. Oxford University Press. pp. 112–138.</li>
+        <li>Rashid, M. (2068). "Digital Nihilism versus Sacred Governance: The Cultural Roots of the 2067 Conflict." <i>International Affairs Review</i>, 82(1), 14–44.</li>
+        <li>Ibid., pp. 44–61.</li>
+        <li>Goon Straits Maritime Incident Registry. (2066). <i>Compilation of Recorded Maritime Confrontations 2048–2065</i>. Geneva: International Maritime Organisation.</li>
+        <li>Swiss Federal Department of Foreign Affairs. (2063). <i>Report on Mediation: Al-Goon Frontier Incident</i>. Berne: FDFA Publications.</li>
+        <li>UN Office for the Coordination of Disarmament Affairs. (2066). <i>Geneva Emergency Summit: Final Report and Assessment</i>. UN Pub. A/2066/112.</li>
+        <li>Nayar, P. (2070), pp. 88–101.</li>
+        <li>Goonland Strategic Studies Institute. (2066). <i>Military Doctrine of the Republic: Principles of Asymmetric Sufficiency</i>. Goonhaven: GSSI Press.</li>
+        <li>Cohen, R. (2069). "Sigint Package Omega and the Opening of the Goonland War." <i>Intelligence and National Security</i>, 34(4), 512–538.</li>
+        <li>Kingdom City Coalition Secretariat. (2065). <i>Kingdom City Mutual Defence Compact: Text and Commentary</i>. Kingdom City: Coalition Press.</li>
+        <li>Park, G. (2069). <i>A Commander's Account: The Kingdom City Campaign</i> [memoir]. Seoul: Hanul Academic. pp. 33–58.</li>
+        <li>Ibid., pp. 114–129.</li>
+        <li>Loh, B. (2068). <i>Faith in the Field: The Church and Kingdom City's War</i>. Kingdom City Church Press. pp. 22–40.</li>
+        <li>Ibid., pp. 41–67.</li>
+        <li>Osei, K. (2071), pp. 167–182.</li>
+        <li>Diallo, A. (2069), pp. 178–195.</li>
+        <li>Goonland Presidential Archives. (2061). <i>Presidential Decree 2061/47: Establishment of the Office of Supreme Master Baiter</i>. Declassified 2069.</li>
+        <li>Li, J. (2068). <i>Strategic Exhaustion: A Commander's Philosophy</i> [autobiography]. Goonhaven: Republic Press. pp. 1–28.</li>
+        <li>Ibid., pp. 45–67.</li>
+        <li>Goonland Ministry of Defence. (2067). <i>Operation Hollow Signal: Classified After-Action Report</i>. Partially declassified 2072. GMOD/OHS/2067/001.</li>
+        <li>Special Committee on Digital Warfare Ethics. (2070). <i>Report on the Synthetic Narrative Offensive</i>. UN Pub. A/DWE/2070/Final.</li>
+        <li>Goonland Grand Council. (2067). <i>Order of Strategic Excellence (First Class): Award of General Jinduo Li — Parliamentary Record</i>. Goonhaven: GGC Press.</li>
+        <li>Shahwi, M.A. (2070). <i>The Eastern Campaign: Memoirs of the Vice President</i>. Goonhaven: Republic Press. pp. 11–33.</li>
+        <li>Al-Rashidi, S. (2071). <i>The Goon Alliance: A Chieftain's Account</i>. Trans. from Arabic. Beirut: Eastern Studies Press. pp. 67–89.</li>
+        <li>Shahwi, M.A. (2070), pp. 67–102.</li>
+        <li>Goonland Military Command. (2067). <i>Al-Gooniyyin Division: Formation and Operational History</i>. Classified 2067, declassified 2073. GMOD/AG/2067/14.</li>
+        <li>Goonland Military Command. (2067). <i>Raid of the Red Dunes: Operational Record</i>. Classified 2067, declassified 2073.</li>
+        <li>UN Security Council. (2067). <i>Draft Resolution 3847: International Investigation into Al-Gooniyyin Operations</i>. UN Pub. S/RES/3847.</li>
+        <li>Al-Goon Autonomy Commission. (2072). <i>Second Annual Report on the Protected Autonomous Region</i>. Goonhaven: AAC Press.</li>
+        <li>He, C. (2058). <i>Principles of Asymmetric Sufficiency: A Military Doctrine</i>. Goonland Strategic Studies Institute Press.</li>
+        <li>Diallo, A. (2069), pp. 155–178.</li>
+        <li>Nayar, P. (2070), pp. 178–196.</li>
+        <li>Goonland Electoral Commission. (2069). <i>Presidential Approval Survey — Quarterly Report</i>. Goonhaven: GEC.</li>
+        <li>Goonland Military Command. (2067). <i>Western Front Operations Command — Kingsley Field Directive Archive</i>. Partially declassified 2073.</li>
+        <li>Ibid.</li>
+        <li>Nayar, P. (2070), pp. 112–134.</li>
+        <li>Special Committee on Digital Warfare Ethics. (2070), pp. 44–78.</li>
+        <li>Varughese, M. (2069). <i>Kingdom City: Faith and Governance in Crisis</i>. London: Bloomsbury. pp. 14–44.</li>
+        <li>Ibid., pp. 201–223.</li>
+        <li>Loh, B. (2068), pp. 112–144.</li>
+        <li>Park, G. (2069), pp. 11–32.</li>
+        <li>Special Committee on Digital Warfare Ethics. (2070), pp. 11–28.</li>
+        <li>Ibid., pp. 29–55.</li>
+        <li>Diallo, A. (2069), pp. 89–111.</li>
+        <li>Cohen, R. (2069), pp. 513–521.</li>
+        <li>Ibid., pp. 522–538.</li>
+        <li>US Congressional Research Service. (2068). <i>American Military Assistance to Goonland: Legal and Policy Analysis</i>. Washington: CRS.</li>
+        <li>Goonland Ministry of Defence. (2067). <i>Dawn Protocol Zero: Classified Operational Record</i>. Partially declassified 2072.</li>
+        <li>Ibid.</li>
+        <li>Park, G. (2069), pp. 77–102.</li>
+        <li>Shahwi, M.A. (2070), pp. 102–155.</li>
+        <li>Coalition After-Action Report. (2069). <i>Kingdom City Coalition: Combined After-Action Assessment of the 2067 Conflict</i>. Kingdom City: Coalition Press. pp. 88–122.</li>
+        <li>Special Committee on Digital Warfare Ethics. (2070), pp. 56–89.</li>
+        <li>Diallo, A. (2069), pp. 178–201.</li>
+        <li>Nayar, P. (2070), pp. 212–234.</li>
+        <li>He, C. (2068). <i>The Central Corridor: How the War Was Won</i>. Goonhaven: Republic Press. pp. 1–45.</li>
+        <li>Diallo, A. (2069), pp. 201–225.</li>
+        <li>Park, G. (2069), pp. 177–202.</li>
+        <li>Coalition After-Action Report. (2069), pp. 188–214.</li>
+        <li>Nayar, P. (2070), pp. 256–278.</li>
+        <li>Ibid., pp. 278–296.</li>
+        <li>Goonland Ministry of Defence. (2068). <i>Official Casualty Registry: Goonland Sovereignty Conflict 2067</i>. Goonhaven: GMOD Press.</li>
+        <li>UN Office for the Coordination of Humanitarian Affairs. (2068). <i>Civilian Casualties in the 2067 Goonland Conflict: Assessment Report</i>. UN Pub. OCHA/2068/GC.</li>
+        <li>Treaty of the Central Corridor. (2067). Full text reproduced in: <i>International Legal Materials</i>, 2067, Vol. 6, pp. 1–44.</li>
+        <li>Goonland National Economic Council. (2068). <i>Post-War Economic Assessment</i>. Goonhaven: GNEC Press.</li>
+        <li>Al-Goon Autonomy Commission. (2073). <i>Fourth Annual Report</i>. Goonhaven: AAC Press.</li>
+        <li>Geneva Digital Protocol Initiative Secretariat. (2069). <i>Mandate and Programme of Work</i>. Geneva: UN Office at Geneva.</li>
+        <li>Special Committee on Digital Warfare Ethics. (2070), pp. 112–145.</li>
+        <li>Special Tribunal for Asymmetric Warfare Accountability. (2074). <i>Al-Gooniyyin Case: Procedural Status Report</i>. The Hague: STAWА Press.</li>
+        <li>UN General Assembly. (2067). <i>Record of Formal Diplomatic Protests re: Goonland Order of Strategic Excellence Award</i>. UN Pub. A/2067/DPR/14.</li>
+        <li>Diallo, A. (2069), pp. 245–278.</li>
+        <li>Ibid., pp. 278–301.</li>
+        <li>Harrison, T. (2072). "The Goonland Victory: A New Strategic Typology." <i>Strategic Studies Quarterly</i>, 16(2), 44–78.</li>
+        <li>Geneva Digital Protocol Initiative Secretariat. (2073). <i>Progress Report and Draft Articles</i>. Geneva: UN Office at Geneva.</li>
+        <li>Nayar, P. (2070), pp. 312–334.</li>
+      </ol>
+    </div>
+
+    <!-- SEE ALSO -->
+    <h2 class="section-heading" id="seealso">See also <span class="editsection">[<a href="#">edit</a>]</span></h2>
+    <ul class="content-list">
+      <li><a href="#">Goonland Presidential History</a></li>
+      <li><a href="#">The Nanjing Auxiliary Corps — Organisation and Operations</a></li>
+      <li><a href="#">Kingdom City Church Governance</a></li>
+      <li><a href="#">2067 International Proxy Conflicts</a></li>
+      <li><a href="#">Jinduo Li: A General's Legacy</a></li>
+      <li><a href="#">Muhammad Adam Shahwi and the Al-Gooniyyin Question</a></li>
+      <li><a href="#">Strategic Exhaustion Doctrine</a></li>
+      <li><a href="#">Treaty of the Central Corridor (2067)</a></li>
+      <li><a href="#">Synthetic Narrative Warfare — International Legal Status</a></li>
+      <li><a href="#">Al-Goon Protected Autonomous Region</a></li>
+      <li><a href="#">Goonland Order of Strategic Excellence</a></li>
+      <li><a href="#">Geneva Digital Protocol Initiative</a></li>
+      <li><a href="#">List of 21st Century Proxy Conflicts</a></li>
+      <li><a href="#">Pyrrhic Victories in Modern Military History</a></li>
+    </ul>
+
+    <!-- CATEGORIES -->
+    <div id="categories">
+      <strong>Categories:</strong>
+      <a href="#" class="cat-link">Wars of the 2060s</a>
+      <a href="#" class="cat-link">Republic of Goonland</a>
+      <a href="#" class="cat-link">Kingdom City</a>
+      <a href="#" class="cat-link">Proxy wars</a>
+      <a href="#" class="cat-link">Digital warfare</a>
+      <a href="#" class="cat-link">Psychological warfare</a>
+      <a href="#" class="cat-link">Irregular warfare</a>
+      <a href="#" class="cat-link">21st-century conflicts</a>
+      <a href="#" class="cat-link">Theocratic governance</a>
+      <a href="#" class="cat-link">Pyrrhic victories</a>
+      <a href="#" class="cat-link">International law</a>
+      <a href="#" class="cat-link">Military strategy</a>
+      <a href="#" class="cat-link">Multinational military operations</a>
+      <a href="#" class="cat-link">Goonland History</a>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /layout -->
+
+<!-- FOOTER -->
+<div id="footer">
+  <p>This page was last edited on 12 January 2075, at 14:33 (UTC). Text is available under the <a href="#">GoonPedia Free Documentation Licence</a>; additional terms may apply.</p>
+  <p style="margin-top:6px;"><a href="#">Privacy policy</a> · <a href="#">About GoonPedia</a> · <a href="#">Disclaimers</a> · <a href="#">Contact GoonPedia</a> · <a href="#">Goonland Historical Archive Series</a></p>
+  <p style="margin-top:6px;font-size:11px;color:#888;">GoonPedia® is a registered trademark of the Goonland Free Knowledge Foundation. This is a fictional encyclopaedic work.</p>
+</div>
+
+</body>
+</html>
